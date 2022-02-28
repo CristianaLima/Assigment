@@ -7,6 +7,9 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="title_home">Assignments to come</string>
+    <string name="choose">Choose your account</string>
+
+
 
     <string-array name="day_of_week">
         <item>Monday</item>

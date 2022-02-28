@@ -7,22 +7,22 @@
     tools:context=".MainActivity"
     android:background="#f5f0e1">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            app:title="MyAssignments"
-            app:titleTextColor="@color/white"
-            app:logo="@drawable/ic_baseline_school_24"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#ffc13b"
-            app:popupTheme="@style/Theme.AssigmentEmilieCristiana.PopupOverlay" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        app:title="Welcome to AssignmentApp"
+        app:titleTextColor="@color/white"
+        app:logo="@drawable/ic_baseline_school_24"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#ffc13b"
+        app:popupTheme="@style/Theme.AssigmentEmilieCristiana.PopupOverlay" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="90dp"
-        android:text="@string/title_home"
+        android:text="@string/choose"
         android:textColor="#1e3d59"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -31,7 +31,7 @@
 
     <ListView
 
-        android:id="@+id/listview"
+        android:id="@+id/listaccount"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="16dp"
