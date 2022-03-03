@@ -4,47 +4,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="#f5f0e1">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            app:title="MyAssignments"
-            app:titleTextColor="@color/white"
-            app:logo="@drawable/ic_baseline_school_24"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#ffc13b"
-            app:popupTheme="@style/Theme.AssigmentEmilieCristiana.PopupOverlay" />
+    android:background="@drawable/assigment_app"
+    tools:context=".MainActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="90dp"
-        android:text="@string/title_home"
-        android:textColor="#1e3d59"
-        android:textSize="20dp"
+        android:id="@+id/signin"
+        android:text="Sign in"
+        android:textColor="@color/black"
+        android:textSize="35dp"
+        android:layout_margin="50dp"
         android:textStyle="bold"
+        android:gravity="center"/>
 
-        />
 
-    <ListView
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signin"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="#50dddddd"
+        android:drawablePadding="10dp"
+        android:hint="Username"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textColorHint="#E41A39"
+        android:textStyle="bold" />
 
-        android:id="@+id/listview"
+    <EditText
+        android:id="@+id/password"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="130dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="#E9ECEF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/username"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#50dddddd"
+        android:drawablePadding="20dp"
 
+        android:hint="Password"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="#E41A39"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/loginbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#50dddddd"
+        android:text="Login"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/registerbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="67dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#50dddddd"
+        android:text="Register"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
 </RelativeLayout>

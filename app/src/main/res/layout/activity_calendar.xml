@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Calendar"
-    android:background="#f5f0e1">
+    android:background="#f5f0e1"
+    >
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -34,7 +35,8 @@
         android:id="@+id/calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="120dp" />
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="120dp"
+        android:background="@color/white" />
 
 </RelativeLayout>

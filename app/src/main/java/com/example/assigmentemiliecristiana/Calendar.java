@@ -16,11 +16,13 @@ public class Calendar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+        CalendarView calendarView = findViewById(R.id.calendar);
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int dayOfMonth) {
 
-        calendar = (CalendarView)
-                findViewById(R.id.calendar);
-        date = (TextView)
-                findViewById(R.id.date);
+            }
+        });
 
         //Listener to the calendar
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {

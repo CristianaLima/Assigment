@@ -19,7 +19,10 @@ import com.example.assigmentemiliecristiana.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -39,7 +42,23 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.toolbar);
+        TextView username = findViewById(R.id.username);
+        TextView password = findViewById(R.id.password);
+
+        Button loginbtn = (Button) findViewById(R.id.loginbtn);
+
+        loginbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(username.getText().toString().equals("admin") && password.getText().toString().equals("admin")){
+                    Toast.makeText(MainActivity.this,"LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
+                }else
+                    Toast.makeText(MainActivity.this,"LOGIN FAILED", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+     /*   setSupportActionBar(binding.toolbar);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
@@ -54,10 +73,8 @@ public class MainActivity extends AppCompatActivity {
         arrayList.add("Cisco read theory");
         arrayList.add("Sleep");
 
-
-
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.listview_layout, arrayList);
-        listView.setAdapter(arrayAdapter);
+        listView.setAdapter(arrayAdapter);*/
 
     }
 
