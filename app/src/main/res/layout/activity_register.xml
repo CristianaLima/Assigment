@@ -68,7 +68,7 @@
         android:id="@+id/input_ConfirmPassword"
         android:layout_width="320dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="52dp"
         android:ems="10"
         android:hint="Confirm password"
         android:inputType="textPersonName|textPassword"
