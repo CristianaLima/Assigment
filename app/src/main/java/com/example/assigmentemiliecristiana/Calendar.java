@@ -24,7 +24,7 @@ public class Calendar extends AppCompatActivity {
             }
         });
 
-        //Listener to the calendar
+ /*       //Listener to the calendar
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             //to get value of DAYS, MONTHS, YEARS
@@ -40,6 +40,6 @@ public class Calendar extends AppCompatActivity {
 
 
             }
-        });
+        });*/
     }
 }
