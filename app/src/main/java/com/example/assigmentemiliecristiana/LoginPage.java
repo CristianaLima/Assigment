@@ -19,8 +19,6 @@ public class LoginPage extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
 
-    ListView listView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +28,7 @@ public class LoginPage extends AppCompatActivity {
         TextView password = findViewById(R.id.password);
 
         Button loginbtn = (Button) findViewById(R.id.loginbtn);
+        Button registerbtn = (Button) findViewById(R.id.registerbtn);
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +41,16 @@ public class LoginPage extends AppCompatActivity {
 
             }
         });
+
+        registerbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               startActivity(new Intent(LoginPage.this, Register.class));
+            }
+        });
+
+
+
 
     }
 
