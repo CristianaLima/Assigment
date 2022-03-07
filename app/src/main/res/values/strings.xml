@@ -9,8 +9,6 @@
     <string name="title_home">Assignments to come</string>
     <string name="choose">Choose your account</string>
 
-
-
     <string-array name="day_of_week">
         <item>Monday</item>
         <item>Tuesday</item>

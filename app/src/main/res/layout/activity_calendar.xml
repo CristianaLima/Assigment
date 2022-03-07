@@ -22,14 +22,13 @@
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/toolbar"
         android:text="Select a date"
         android:textColor="@color/black"
         android:textSize="20dp"
-        android:textStyle="bold"
-/>
+        android:textStyle="bold" />
 
     <CalendarView
         android:id="@+id/calendar"

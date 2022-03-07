@@ -1,18 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
-    
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
     <ImageView
         android:id="@+id/icon"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:padding="5dp"/>
+        android:padding="5dp"
+        android:src="@drawable/task" />
+
+    <TextView
+        android:id="@+id/homepage_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="false"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="Assignments of the day"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/homepage_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/icon"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="!!DATE!!"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+
 
     <ListView
         android:id="@+id/home_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_width="368dp"
+        android:layout_height="715dp"
+        android:layout_below="@id/homepage_date" />
 </RelativeLayout>
