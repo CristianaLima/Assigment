@@ -34,10 +34,17 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
-        android:text="!!DATE!!"
         android:textSize="15dp"
         android:textStyle="bold" />
 
+    <ImageButton
+        android:id="@+id/calendar_img_button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="50dp"
+        android:padding="5dp"
+        android:src="@drawable/ic_baseline_calendar_today_24" />
 
 
     <ListView

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AssigmentEmilieCristiana">
         <activity
-            android:name=".Calendar"
+            android:name=".CalendarPage"
             android:exported="false" />
         <activity
             android:name=".Home"

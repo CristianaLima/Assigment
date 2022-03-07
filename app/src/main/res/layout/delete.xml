@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         app:title="MyAssignments"
         app:titleTextColor="@color/white"
-        app:logo="@drawable/ic_baseline_school_24"
+        app:logo="@drawable/school_"
         android:layout_height="?attr/actionBarSize"
         android:background="#ffc13b"
         app:popupTheme="@style/Theme.AssigmentEmilieCristiana.PopupOverlay" />

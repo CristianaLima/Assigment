@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Calendar"
-    android:background="#f5f0e1"
+    tools:context=".CalendarPage"
+    android:background="#ffffffff"
     >
 
     <androidx.appcompat.widget.Toolbar
@@ -13,13 +13,13 @@
         android:layout_width="match_parent"
         app:title="MyAssignments"
         app:titleTextColor="@color/white"
-        app:logo="@drawable/ic_baseline_school_24"
+        app:logo="@drawable/school_"
         android:layout_height="?attr/actionBarSize"
         android:background="#ffc13b"
         app:popupTheme="@style/Theme.AssigmentEmilieCristiana.PopupOverlay" />
 
     <TextView
-        android:id="@+id/date"
+        android:id="@+id/date_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
@@ -30,12 +30,27 @@
         android:textSize="20dp"
         android:textStyle="bold" />
 
-    <CalendarView
+    <EditText
+        android:id="@+id/chosen_date"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="100dp"
+        android:layout_marginTop="300dp"
+        android:hint="Select a date"
+        android:textAlignment="center"
+        android:textSize="30sp" />
+
+
+<!--    <CalendarView
         android:id="@+id/calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="120dp"
-        android:background="@color/white" />
+        android:background="@color/white"
+        android:dateTextAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:focusedMonthDateColor="#888"
+        android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Medium"
+        />-->
 
 </RelativeLayout>
