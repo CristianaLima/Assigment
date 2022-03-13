@@ -32,7 +32,8 @@ public class Home extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_home);
 
-    ImageButton calendar_button = (ImageButton) findViewById(R.id.calendar_img_button);
+    ImageButton calendar_button = (ImageButton) findViewById(R.id.date_button);
+    ImageButton profile_button = (ImageButton) findViewById(R.id.profile_button);
     date_view =(TextView) findViewById(R.id.date_view);
     listView = (ListView) findViewById(R.id.home_list);
 
@@ -50,6 +51,14 @@ public class Home extends AppCompatActivity {
     listView.setAdapter(arrayAdapter);
 
 
+    profile_button.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            startActivity(new Intent(Home.this, MyProfile.class));
+
+        }
+    });
+
     calendar_button.setOnClickListener(new View.OnClickListener() {
         public void onClick(View view) {
             {
@@ -60,6 +69,7 @@ public class Home extends AppCompatActivity {
             }
         }
     });
+
 
     setListener = new DatePickerDialog.OnDateSetListener() {
         @Override
