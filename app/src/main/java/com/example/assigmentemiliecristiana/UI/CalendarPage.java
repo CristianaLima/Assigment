@@ -1,21 +1,18 @@
-package com.example.assigmentemiliecristiana;
+package com.example.assigmentemiliecristiana.UI;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CalendarView;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.assigmentemiliecristiana.R;
 
 import java.util.Calendar;
 

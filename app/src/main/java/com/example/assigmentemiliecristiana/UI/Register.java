@@ -1,6 +1,5 @@
-package com.example.assigmentemiliecristiana;
+package com.example.assigmentemiliecristiana.UI;
 //fjskdfgfdgfdfsddsa
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +8,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.ui.AppBarConfiguration;
+
+import com.example.assigmentemiliecristiana.R;
 
 public class Register extends AppCompatActivity {
 

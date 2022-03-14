@@ -1,9 +1,11 @@
-package com.example.assigmentemiliecristiana;
+package com.example.assigmentemiliecristiana.UI;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.ui.AppBarConfiguration;
+
+import com.example.assigmentemiliecristiana.R;
 
 public class MyProfile extends AppCompatActivity {
 

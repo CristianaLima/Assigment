@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:background="#f5f0e1"
     android:padding="16dp">
 
     <ImageView
@@ -21,9 +22,21 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
-        android:text="Assignments of the day"
-        android:textSize="25dp"
+        android:text="Assignments of \n the day"
+        android:textSize="22dp"
         android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/add_assingment"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="310dp"
+        android:backgroundTint="#FF4962E8"
+        android:contentDescription="add assignment"
+        android:src="@drawable/ic_baseline_add_circle_24" />
 
 
     <ImageButton
@@ -32,8 +45,10 @@
         android:layout_height="60dp"
         android:layout_alignParentEnd="true"
         android:layout_marginLeft="300dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="55dp"
         android:layout_marginEnd="14dp"
+        android:backgroundTint="#FF4962E8"
+        android:contentDescription="date_button"
         android:padding="5dp"
         android:src="@drawable/ic_baseline_calendar_today_24" />
 
@@ -57,14 +72,14 @@
 
     <ImageButton
         android:id="@+id/profile_button"
-        android:layout_width="80dp"
-        android:layout_height="49dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
         android:layout_marginStart="304dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="11dp"
-        android:padding="20dp"
+        android:backgroundTint="#4962E8"
+        android:contentDescription="profile_button"
+        android:padding="5dp"
         android:src="@drawable/ic_baseline_account_circle_24" />
 </RelativeLayout>
