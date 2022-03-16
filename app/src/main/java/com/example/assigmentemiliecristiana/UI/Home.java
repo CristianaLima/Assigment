@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -38,6 +39,7 @@ public class Home extends AppCompatActivity {
         ImageButton add_assignment = (ImageButton) findViewById(R.id.add_assingment);
         date_view =(TextView) findViewById(R.id.date_view);
         listView = (ListView) findViewById(R.id.home_list);
+
 
         ArrayList<String> arrayList = new ArrayList<String>();
         arrayList.add("Android studio home page");
@@ -91,11 +93,11 @@ public class Home extends AppCompatActivity {
             }
         };
 
-
-
-
-
-
     }
+/*
+    public boolean onCreateOptionMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }*/
 
 }

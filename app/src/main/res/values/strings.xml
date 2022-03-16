@@ -9,15 +9,19 @@
     <string name="title_home">Assignments to come</string>
     <string name="choose">Choose your account</string>
     <string name="status">Status</string>
+    <string name="account">My account</string>
 
-    <string-array name="day_of_week">
-        <item>Monday</item>
-        <item>Tuesday</item>
-        <item>Wednesday</item>
-        <item>Thursday</item>
-        <item>Friday</item>
-        <item>Saturday</item>
-        <item>Sunday</item>
+    <string-array name="status_list">
+        <item>To do</item>
+        <item>In Progress</item>
+        <item>Done</item>
+    </string-array>
+
+    <string-array name="type_list">
+        <item>Exam</item>
+        <item>Project</item>
+        <item>Homework</item>
+        <item>Task</item>
     </string-array>
 
     <string name="hello_first_fragment">Hello first fragment</string>

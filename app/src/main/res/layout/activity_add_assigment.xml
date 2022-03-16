@@ -1,48 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f5f0e1">
-
-    <Spinner
-        android:id="@+id/type"
-        android:layout_width="150dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="136dp"
-        android:contentDescription="@string/status"
-        android:prompt="@string/status"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/note"
-        android:layout_width="325dp"
-        android:layout_height="55dp"
-        android:ems="10"
-        android:hint="Note"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/course"
-        android:layout_width="325dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="272dp"
-        android:ems="10"
-        android:hint="Course"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/note"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView"
@@ -53,59 +15,71 @@
         android:textColor="#041F6C"
         android:textStyle="bold"
         android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.907"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.869" />
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"/>
 
     <EditText
         android:id="@+id/description"
-        android:layout_width="325dp"
+        android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:ems="10"
-        android:hint="Description "
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_baseline_notes_24"
+        android:drawablePadding="10dp"
+        android:hint="Description"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/course"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95" />
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textColorHint="@color/black"
+        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/delivery_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="264dp"
-        android:text="Delivery date"
-        android:textSize="18dp"
+    <EditText
+        android:id="@+id/course"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_below="@id/description"
+        android:drawableStart="@drawable/ic_baseline_school_24"
+        android:background="@drawable/custom_input"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.104"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:drawablePadding="10dp"
+        android:hint="Course"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/black" />
+
+    <EditText
+        android:id="@+id/note"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="11dp"
+        android:layout_below="@id/course"
+        android:layout_marginEnd="20dp"
+        android:drawableStart="@drawable/ic_baseline_read_more_24"
+        android:background="@drawable/custom_input"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:drawablePadding="10dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#888888"
+        android:ems="10"
+        android:textColorHint="@color/black"
+        android:hint="Note"
+        android:inputType="textPersonName" />
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginBottom="256dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="330dp"
+        android:layout_marginTop="85dp"
         android:contentDescription="date button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.429"
-        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_baseline_calendar_today_24" />
 
     <Spinner
@@ -115,9 +89,24 @@
         android:layout_marginBottom="196dp"
         android:contentDescription="@string/second_fragment_label"
         android:prompt="@string/status"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="370dp"
+        android:layout_marginStart="20dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Spinner
+        android:id="@+id/type"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="430dp"
+        android:layout_marginStart="20dp"
+        android:contentDescription="@string/status"
+        android:prompt="@string/status" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="400dp"
+        android:text="Create " />
+
+</RelativeLayout>
