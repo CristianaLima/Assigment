@@ -27,16 +27,16 @@ public class AssignmentEntity implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private Long id;
     private String name;
-    private String [] type;
+    private String type;
     private String description;
     private Date date;
-    private String [] status;
+    private String status;
     private String owner;
 
     public AssignmentEntity() {
     }
 
-    public AssignmentEntity(String name, String[] type, String description, Date date, String[] status, String owner) {
+    public AssignmentEntity(String name, String type, String description, Date date, String status, String owner) {
         this.name = name;
         this.type = type;
         this.description = description;
@@ -51,14 +51,6 @@ public class AssignmentEntity implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String[] getType() {
-        return type;
-    }
-
-    public void setType(String[] type) {
-        this.type = type;
     }
 
     public String getDescription() {
@@ -77,20 +69,28 @@ public class AssignmentEntity implements Serializable {
         this.date = date;
     }
 
-    public String[] getStatus() {
-        return status;
-    }
-
-    public void setStatus(String[] status) {
-        this.status = status;
-    }
-
     public String getOwner() {
         return owner;
     }
 
     public void setOwner(String owner) {
         this.owner = owner;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getName() {
