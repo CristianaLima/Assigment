@@ -29,14 +29,14 @@ public class AssignmentEntity implements Serializable {
     private String name;
     private String type;
     private String description;
-    private Date date;
+    private Long date;
     private String status;
     private String owner;
 
     public AssignmentEntity() {
     }
 
-    public AssignmentEntity(String name, String type, String description, Date date, String status, String owner) {
+    public AssignmentEntity(String name, String type, String description, Long date, String status, String owner) {
         this.name = name;
         this.type = type;
         this.description = description;
@@ -61,11 +61,11 @@ public class AssignmentEntity implements Serializable {
         this.description = description;
     }
 
-    public Date getDate() {
+    public Long getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Long date) {
         this.date = date;
     }
 

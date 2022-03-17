@@ -26,8 +26,8 @@ public interface StudentDao {
     @Insert
     long insert(StudentEntity studentEntity) throws SQLiteConstraintException;
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    long insertAll(List<StudentEntity> studentEntities);
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    long insertAll(List<StudentEntity> studentEntities);
 
     @Update
     void update(StudentEntity studentEntity);

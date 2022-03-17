@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import java.util.Objects;
 
-@Entity(tableName = "students", primaryKeys = {"email"})
+@Entity(tableName = "students", primaryKeys = {"username"})
 public class StudentEntity {
 
     @NonNull
