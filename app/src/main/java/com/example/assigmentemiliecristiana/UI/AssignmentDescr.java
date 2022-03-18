@@ -1,33 +1,25 @@
 package com.example.assigmentemiliecristiana.UI;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.assigmentemiliecristiana.R;
 
-public class AddAssignment extends AppCompatActivity {
-
-    Button btn;
+public class AssignmentDescr extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_assigment);
-
-        btn = (Button) findViewById(R.id.create_button);
+        setContentView(R.layout.activity_assignmentdescr);
 
         Spinner spinner = (Spinner) findViewById(R.id.status);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.status_list, android.R.layout.simple_spinner_item);
-                // Specify the layout to use when the list of choices appears
+        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
@@ -36,19 +28,8 @@ public class AddAssignment extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
                 R.array.type_list, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinner_type.setAdapter(adapter2);
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(AddAssignment.this, Home.class));
-
-            }
-        });
-
+        spinner_type.setAdapter(adapter2);
     }
-
-
 
 
 }

@@ -28,6 +28,7 @@
         android:layout_marginTop="188dp"
         android:ems="10"
         android:hint="Username"
+        android:background="@drawable/custom_input"
         android:inputType="textPersonName"
         android:textColorHint="#FBFBFB"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,6 +47,7 @@
         android:inputType="textPersonName"
         android:textColorHint="#FBFBFB"
         app:layout_constraintEnd_toEndOf="@+id/input_Username"
+        android:background="@drawable/custom_input"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/input_Username"
         app:layout_constraintTop_toBottomOf="@+id/input_Username" />
@@ -60,6 +62,7 @@
         android:inputType="textPersonName|textPassword"
         android:textColorHint="#FBFBFB"
         app:layout_constraintEnd_toEndOf="@+id/input_Email"
+        android:background="@drawable/custom_input"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="@+id/input_Email"
         app:layout_constraintTop_toBottomOf="@+id/input_Email" />
@@ -72,6 +75,7 @@
         android:ems="10"
         android:hint="Confirm password"
         android:inputType="textPersonName|textPassword"
+        android:background="@drawable/custom_input"
         android:textColorHint="#FBFBFB"
         app:layout_constraintBottom_toTopOf="@+id/register_btn"
         app:layout_constraintEnd_toEndOf="@+id/input_Password"
