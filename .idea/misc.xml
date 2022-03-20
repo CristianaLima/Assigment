@@ -3,16 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/etdnp/StudioProjects/AssigmentApp/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.173" />
-        <entry key="..\:/Users/etdnp/StudioProjects/AssigmentApp/app/src/main/res/drawable/ic_baseline_security_24.xml" value="0.173" />
-        <entry key="..\:/Users/etdnp/StudioProjects/AssigmentApp/app/src/main/res/layout/activity_add_assigment.xml" value="0.25" />
-        <entry key="..\:/Users/etdnp/StudioProjects/AssigmentApp/app/src/main/res/layout/activity_assignmentdescr.xml" value="0.264" />
-        <entry key="..\:/Users/etdnp/StudioProjects/AssigmentApp/app/src/main/res/layout/activity_calendar.xml" value="0.25" />
-        <entry key="..\:/Users/etdnp/StudioProjects/AssigmentApp/app/src/main/res/layout/activity_home.xml" value="0.25" />
-        <entry key="..\:/Users/etdnp/StudioProjects/AssigmentApp/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Users/etdnp/StudioProjects/AssigmentApp/app/src/main/res/layout/activity_myprofile.xml" value="0.25" />
-        <entry key="..\:/Users/etdnp/StudioProjects/AssigmentApp/app/src/main/res/layout/activity_register.xml" value="0.264" />
-        <entry key="..\:/Users/etdnp/StudioProjects/AssigmentApp/app/src/main/res/menu/menu_main.xml" value="0.25" />
+        <entry key="..\:/HES/4emeSemestre/MobileAndCloud/Assigment/app/src/main/res/layout/activity_myprofile.xml" value="0.12335359675785208" />
+        <entry key="..\:/Users/etdnp/StudioProjects/Assigment/app/src/main/res/drawable/custom_input.xml" value="0.243" />
+        <entry key="..\:/Users/etdnp/StudioProjects/Assigment/app/src/main/res/drawable/custom_login.xml" value="0.2555" />
+        <entry key="..\:/Users/etdnp/StudioProjects/Assigment/app/src/main/res/drawable/round_image.xml" value="0.2555" />
+        <entry key="..\:/Users/etdnp/StudioProjects/Assigment/app/src/main/res/layout/activity_add_assigment.xml" value="0.2" />
+        <entry key="..\:/Users/etdnp/StudioProjects/Assigment/app/src/main/res/layout/activity_calendar.xml" value="0.264" />
+        <entry key="..\:/Users/etdnp/StudioProjects/Assigment/app/src/main/res/layout/activity_home.xml" value="0.264" />
+        <entry key="..\:/Users/etdnp/StudioProjects/Assigment/app/src/main/res/layout/activity_login.xml" value="0.15625" />
+        <entry key="..\:/Users/etdnp/StudioProjects/Assigment/app/src/main/res/layout/activity_myprofile.xml" value="0.264" />
+        <entry key="..\:/Users/etdnp/StudioProjects/Assigment/app/src/main/res/layout/activity_register.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/etdnp/StudioProjects/Assigment/app/src/main/res/menu/menu_main.xml" value="0.264" />
       </map>
     </option>
   </component>
