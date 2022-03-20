@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,7 +25,7 @@ import java.util.Calendar;
 
 public class Home extends AppCompatActivity {
 
-    ScrollView scrollView;
+    Toolbar toolbar;
     TextView date_view;
     TextView homepage_date;
     ListView listView;
@@ -102,10 +103,5 @@ public class Home extends AppCompatActivity {
         };
 
     }
-/*
-    public boolean onCreateOptionMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu_main,menu);
-        return true;
-    }*/
 
 }
