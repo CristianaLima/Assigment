@@ -16,7 +16,7 @@
 
     <TextView
         android:id="@+id/homepage_title"
-        android:layout_width="240dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="false"
         android:layout_marginStart="60dp"
@@ -29,7 +29,7 @@
         android:textStyle="bold" />
 
 
-    <ImageButton
+   <!-- <ImageButton
         android:id="@+id/add_assingment"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -38,7 +38,7 @@
         android:layout_marginEnd="310dp"
         android:contentDescription="add assignment"
         android:padding="5dp"
-        android:src="@mipmap/add" />
+        android:src="@mipmap/add" />-->
 
     <ImageButton
         android:id="@+id/date_button"
@@ -46,8 +46,8 @@
         android:layout_height="60dp"
         android:layout_alignParentEnd="true"
         android:layout_marginLeft="300dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="14dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="20dp"
         android:backgroundTint="#FF4962E8"
         android:contentDescription="date_button"
         android:padding="5dp"
@@ -66,21 +66,38 @@
         android:textSize="15dp"
         android:textStyle="bold" />
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_list"
         android:layout_width="368dp"
         android:layout_height="715dp"
         android:layout_below="@id/homepage_date"
         android:layout_marginTop="20dp" />
 
-    <ImageButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_assingment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="290dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="@dimen/fab_margin"
+        app:backgroundTint="#FF4962E8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:maxImageSize="35dp"
+        app:srcCompat="@drawable/ic_action_add" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/profile_button"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="8dp"
-        android:contentDescription="profile_button"
-        android:padding="5dp"
-        android:src="@mipmap/acc_icon_final" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="290dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="@dimen/fab_margin"
+        app:backgroundTint="#FF4962E8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:maxImageSize="35dp"
+        app:srcCompat="@drawable/ic_profile_icon" />
+
 </RelativeLayout>

@@ -49,7 +49,7 @@ public class ListAdapter<T> extends ArrayAdapter<T> {
                     .inflate(mResource, parent, false);
 
             viewHolder = new ListAdapter.ViewHolder();
-            viewHolder.itemView = convertView.findViewById(R.id.home_list);
+            viewHolder.itemView = convertView.findViewById(R.id.tvRecyclerView);
 
             convertView.setTag(viewHolder);
         } else {

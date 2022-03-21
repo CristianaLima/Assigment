@@ -21,10 +21,13 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
     private List<T> mData;
     private RecyclerViewItemClickListener mListener;
 
+
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
+
     static class ViewHolder extends RecyclerView.ViewHolder {
+
         // each data item is just a string in this case
         TextView mTextView;
         ViewHolder(TextView textView) {
@@ -41,13 +44,9 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
     public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         TextView v = (TextView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_home, parent, false);
+                .inflate(R.layout.assignments_list, parent, false);
         final ViewHolder viewHolder = new ViewHolder(v);
         v.setOnClickListener(view -> mListener.onItemClick(view, viewHolder.getAdapterPosition()));
-        v.setOnLongClickListener(view -> {
-            mListener.onItemLongClick(view, viewHolder.getAdapterPosition());
-            return true;
-        });
         return viewHolder;
     }
 
@@ -72,7 +71,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
     public void setData(final List<T> data) {
         if (mData == null) {
             mData = data;
-            notifyItemRangeInserted(0, data.size());
+            /*notifyItemRangeInserted(0, data.size());*/
         } else {
             DiffUtil.DiffResult result = DiffUtil.calculateDiff(new DiffUtil.Callback() {
                 @Override
