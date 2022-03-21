@@ -22,11 +22,13 @@ import com.example.assigmentemiliecristiana.R;
 import com.example.assigmentemiliecristiana.adapter.RecyclerAdapter;
 import com.example.assigmentemiliecristiana.database.entity.AssignmentEntity;
 import com.example.assigmentemiliecristiana.util.RecyclerViewItemClickListener;
+import com.example.assigmentemiliecristiana.viewmodel.assignment.AssignmentListDateViewModel;
 import com.example.assigmentemiliecristiana.viewmodel.assignment.AssignmentListViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Home extends AppCompatActivity {
@@ -36,6 +38,7 @@ public class Home extends AppCompatActivity {
     private static final String TAG = "AssigmentActivity";
     private List<AssignmentEntity> assignments;
     private AssignmentListViewModel viewModel;
+    private AssignmentListDateViewModel dateViewModel;
 
     TextView date_view;
     TextView homepage_date;
@@ -48,6 +51,7 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        homepage_date = findViewById(R.id.homepage_date);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.home_list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -127,6 +131,7 @@ public class Home extends AppCompatActivity {
                             Home.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener, year, month, day);
                     datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     datePickerDialog.show();
+
                 }
             }
         });
@@ -135,8 +140,22 @@ public class Home extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
-                String date = day + "/" + month + "/" + year;
-                homepage_date.setText(date);
+                Long date = new Date(year,month,day).getTime();
+                String dateS = day + "/" + month + "/" + year;
+
+                homepage_date.setText(dateS);
+
+                AssignmentListDateViewModel.Factory factory = new AssignmentListDateViewModel.Factory(getApplication(),user,date);
+                dateViewModel = new ViewModelProvider(Home.this,factory).get(AssignmentListDateViewModel.class);
+
+                dateViewModel.getDateAssignments().observe(Home.this,assignmentEntities -> {
+                    if(assignmentEntities!=null){
+                        assignments=assignmentEntities;
+                        adapter.setData(assignments);
+                    }
+                });
+
+                recyclerView.setAdapter(adapter);
             }
         };
 

@@ -23,6 +23,9 @@ public abstract class AssignmentDao {
     @Query("SELECT * FROM assignments WHERE owner = :owner")
     public abstract LiveData<List<AssignmentEntity>> getOwned(String owner);
 
+    @Query("SELECT * FROM assignments WHERE owner= :owner AND date = :date")
+    public abstract LiveData<List<AssignmentEntity>> getAssigByDate(String owner, Long date);
+
     @Insert
     public abstract long insert(AssignmentEntity assignmentEntity);
 

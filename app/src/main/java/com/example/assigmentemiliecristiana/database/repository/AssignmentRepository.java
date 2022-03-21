@@ -41,6 +41,10 @@ public class AssignmentRepository {
         return ((BaseApp) application).getDatabase().assignmentDao().getOwned(owner);
     }
 
+    public LiveData<List<AssignmentEntity>> getByDate(final String owner, final Long date, Application application){
+        return ((BaseApp) application).getDatabase().assignmentDao().getAssigByDate(owner, date);
+    }
+
     public void insert(final AssignmentEntity assignment, OnAsyncEventListener callback,
                        Application application){
         new CreateAssignment(application,callback).execute(assignment);
