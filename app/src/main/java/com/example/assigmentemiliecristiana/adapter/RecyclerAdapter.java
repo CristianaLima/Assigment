@@ -71,7 +71,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
     public void setData(final List<T> data) {
         if (mData == null) {
             mData = data;
-            /*notifyItemRangeInserted(0, data.size());*/
+            notifyItemRangeInserted(0, data.size());
         } else {
             DiffUtil.DiffResult result = DiffUtil.calculateDiff(new DiffUtil.Callback() {
                 @Override
