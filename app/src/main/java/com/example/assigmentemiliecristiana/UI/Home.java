@@ -42,7 +42,6 @@ public class Home extends AppCompatActivity {
         date_view =(TextView) findViewById(R.id.date_view);
         listView = (ListView) findViewById(R.id.home_list);
 
-
         ArrayList<String> arrayList = new ArrayList<String>();
         arrayList.add("Android studio home page");
         arrayList.add("Decorator pattern exo 2");
@@ -78,8 +77,6 @@ public class Home extends AppCompatActivity {
 
             }
         });
-
-
 
         calendar_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {

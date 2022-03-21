@@ -4,31 +4,31 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.ui.AppBarConfiguration;
 
 import com.example.assigmentemiliecristiana.R;
 
-public class MyProfile extends AppCompatActivity {
+public class ModifiyProfile extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
 
-
     @Override
-    protected void onCreate (Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_myprofile);
+        setContentView(R.layout.modify_profile);
+        Button apply = (Button) findViewById(R.id.apply_btn);
 
-        Button modify = (Button)findViewById(R.id.modify_account_btn);
-
-        modify.setOnClickListener(new View.OnClickListener() {
+        apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MyProfile.this, ModifiyProfile.class));
-            }
-        });
+                startActivity(new Intent(ModifiyProfile.this, MyProfile.class));
 
+            }
+
+        });
 
     }
 }
