@@ -25,6 +25,10 @@ import java.util.Calendar;
 
 public class Home extends AppCompatActivity {
 
+    public static final String PREFS_NAME = "SharefPrefs";
+    public static final String PREFS_USER = "LoggedIn";
+
+
     Toolbar toolbar;
     TextView date_view;
     TextView homepage_date;

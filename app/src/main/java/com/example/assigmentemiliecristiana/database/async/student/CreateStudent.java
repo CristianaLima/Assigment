@@ -29,4 +29,15 @@ public class CreateStudent extends AsyncTask<StudentEntity, Void, Void> {
         }
         return null;
     }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        if (callback != null) {
+            if (exception == null) {
+                callback.onSuccess();
+            } else {
+                callback.onFailure(exception);
+            }
+        }
+    }
 }

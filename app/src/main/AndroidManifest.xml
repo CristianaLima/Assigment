@@ -7,7 +7,8 @@
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AssigmentEmilieCristiana">
+        android:theme="@style/Theme.AssigmentEmilieCristiana"
+        android:name=".BaseApp">
 
         <activity
             android:name=".UI.CalendarPage"

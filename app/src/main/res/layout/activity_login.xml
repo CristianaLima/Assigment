@@ -24,7 +24,7 @@
 
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/username_login"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/signin"
@@ -47,7 +47,7 @@
         android:id="@+id/password"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/username"
+        android:layout_below="@id/username_login"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
@@ -91,5 +91,21 @@
         android:text="Sign in"
         android:textColor="@color/black"
         android:textStyle="bold" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/reset_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="130dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#50dddddd"
+        android:text="Reset database"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
 
 </RelativeLayout>
