@@ -2,6 +2,7 @@ package com.example.assigmentemiliecristiana.UI;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -17,17 +18,29 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.assigmentemiliecristiana.R;
+import com.example.assigmentemiliecristiana.adapter.RecyclerAdapter;
+import com.example.assigmentemiliecristiana.database.entity.AssignmentEntity;
+import com.example.assigmentemiliecristiana.database.repository.StudentRepository;
+import com.example.assigmentemiliecristiana.viewmodel.assignment.AssignmentListViewModel;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class Home extends AppCompatActivity {
 
     public static final String PREFS_NAME = "SharefPrefs";
     public static final String PREFS_USER = "LoggedIn";
 
+    private static final String TAG = "AssigmentActivity";
+
+    private List<AssignmentEntity> assignments;
+    private AssignmentListViewModel viewModel;
 
     Toolbar toolbar;
     TextView date_view;
@@ -35,10 +48,25 @@ public class Home extends AppCompatActivity {
     ListView listView;
     DatePickerDialog.OnDateSetListener setListener;
 
+    private RecyclerAdapter <AssignmentEntity> adapter;
+
+
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        ListView listView = findViewById(R.id.home_list);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        listView.setLayoutManager(layoutManager);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                LinearLayoutManager.VERTICAL);
+        recyclerView.addItemDecoration(dividerItemDecoration);
+
+        SharedPreferences settings = getSharedPreferences(Home.PREFS_NAME, 0);
+        String user = settings.getString(Home.PREFS_USER,null);
 
         ImageButton calendar_button = (ImageButton) findViewById(R.id.date_button);
         ImageButton profile_button = (ImageButton) findViewById(R.id.profile_button);
