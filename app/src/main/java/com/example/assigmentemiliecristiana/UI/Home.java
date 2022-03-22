@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -40,6 +41,7 @@ public class Home extends AppCompatActivity {
     private AssignmentListViewModel viewModel;
     private AssignmentListDateViewModel dateViewModel;
 
+    Button showAll;
     TextView date_view;
     TextView homepage_date;
     DatePickerDialog.OnDateSetListener setListener;
@@ -51,6 +53,7 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        showAll = findViewById(R.id.show_all);
         homepage_date = findViewById(R.id.homepage_date);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.home_list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -112,7 +115,7 @@ public class Home extends AppCompatActivity {
         add_assignment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Home.this, AddAssignment.class));
+                startActivity(new Intent(Home.this, CreateAssignment.class));
             }
         });
 

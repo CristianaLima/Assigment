@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f5f0e1">
+    android:background="@drawable/app_background">
 
     <TextView
         android:id="@+id/textView"
@@ -11,51 +12,56 @@
         android:layout_height="39dp"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="50dp"
-        android:text="Details"
-        android:textAlignment="center"
+        android:layout_marginTop="40dp"
+        android:text="Create an assignment"
         android:textColor="#041F6C"
-        android:textSize="30dp"
+        android:textSize="25dp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/description"
+    <EditText
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_alignParentStart="true"
         android:layout_marginStart="11dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_baseline_notes_24"
         android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:hint="Name"
         android:inputType="textPersonName"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
+        android:scrollHorizontally="true"
         android:textColorHint="@color/black"
-        android:textSize="20dp"
+        android:textSize="18dp"
         android:textStyle="bold" />
 
-    <TextView
+    <EditText
         android:id="@+id/course"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_below="@id/description"
+        android:layout_below="@id/name"
         android:layout_marginStart="11dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_baseline_school_24"
         android:drawablePadding="10dp"
+        android:hint="Course"
         android:inputType="textPersonName"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
+        android:textSize="18dp"
+        android:scrollHorizontally="true"
+        android:gravity="center_vertical"
         android:textColorHint="@color/black"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/note"
+    <EditText
+        android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_below="@id/course"
@@ -63,30 +69,50 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/custom_input"
-        android:backgroundTint="#888888"
         android:drawableStart="@drawable/ic_baseline_read_more_24"
         android:drawablePadding="10dp"
         android:ems="10"
+        android:scrollHorizontally="true"
+        android:gravity="center_vertical"
+        android:textStyle="bold"
+        android:hint="Description"
         android:inputType="textPersonName"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
+        android:textSize="18dp"
         android:textColorHint="@color/black" />
 
     <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="60dp"
+        android:id="@+id/create_date"
+        android:layout_width="50dp"
         android:layout_height="60dp"
-        android:layout_marginStart="330dp"
-        android:layout_marginTop="85dp"
-        android:contentDescription="date button"
-        app:srcCompat="@drawable/ic_baseline_calendar_today_24" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="35dp"
+        android:backgroundTint="#FF4962E8"
+        android:contentDescription="date_button"
+        android:padding="5dp"
+        android:src="@mipmap/acc_calendar" />
+
+    <TextView
+        android:id="@+id/due_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="150dp"
+        android:text="ici daaate"
+        android:textAlignment="center"
+        android:textColor="#041F6C"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/status"
         android:layout_width="150dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="420dp"
         android:layout_marginBottom="196dp"
         android:contentDescription="@string/second_fragment_label"
         android:prompt="@string/status" />
@@ -95,10 +121,17 @@
         android:id="@+id/type"
         android:layout_width="150dp"
         android:layout_height="48dp"
+        android:layout_marginTop="470dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="430dp"
         android:contentDescription="@string/status"
         android:prompt="@string/status" />
-    />
+
+    <Button
+        android:id="@+id/create_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="450dp"
+        android:text="Create " />
 
 </RelativeLayout>

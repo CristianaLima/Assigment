@@ -20,7 +20,7 @@
             android:theme="@style/Theme.AssigmentEmilieCristiana"/>
 
         <activity
-            android:name=".UI.AddAssignment"
+            android:name=".UI.CreateAssignment"
             android:label="@string/app_name"
             android:theme="@style/Theme.AssigmentEmilieCristiana"/>
 

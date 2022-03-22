@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_background">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="267dp"
+        android:layout_height="39dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="50dp"
+        android:text="Details"
+        android:textAlignment="center"
+        android:textColor="#041F6C"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/date_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="160dp"
+        android:text="ici daaate"
+        android:textAlignment="center"
+        android:textColor="#041F6C"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_baseline_notes_24"
+        android:scrollHorizontally="true"
+        android:gravity="center_vertical"
+        android:drawablePadding="10dp"
+        android:inputType="textPersonName"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/course"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_below="@id/description"
+        android:layout_marginStart="11dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_baseline_school_24"
+        android:scrollHorizontally="true"
+        android:gravity="center_vertical"
+        android:drawablePadding="10dp"
+        android:inputType="textPersonName"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/note"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_below="@id/course"
+        android:layout_marginStart="11dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_baseline_read_more_24"
+        android:scrollHorizontally="true"
+        android:gravity="center_vertical"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/black" />
+
+    <ImageButton
+        android:id="@+id/date_assignment"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="#FF4962E8"
+        android:contentDescription="date_button"
+        android:padding="5dp"
+        android:src="@mipmap/acc_calendar" />
+
+    <Spinner
+        android:id="@+id/status"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="420dp"
+        android:layout_marginBottom="196dp"
+        android:contentDescription="@string/second_fragment_label"
+        android:prompt="@string/status" />
+
+    <Spinner
+        android:id="@+id/type"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="470dp"
+        android:contentDescription="@string/status"
+        android:prompt="@string/status" />
+
+    <Button
+        android:id="@+id/save_assigment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="290dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/delete_assignment"
+        android:text="Save" />
+
+    <Button
+        android:id="@+id/delete_assignment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="290dp"
+        android:layout_marginTop="420dp"
+        android:text="Delete" />
+
+    />
+
+</RelativeLayout>

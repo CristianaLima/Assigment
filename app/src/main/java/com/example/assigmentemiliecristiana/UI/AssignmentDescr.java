@@ -1,8 +1,15 @@
 package com.example.assigmentemiliecristiana.UI;
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -11,10 +18,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.assigmentemiliecristiana.R;
 import com.example.assigmentemiliecristiana.database.entity.AssignmentEntity;
-import com.example.assigmentemiliecristiana.viewmodel.assignment.AssignmentListViewModel;
 import com.example.assigmentemiliecristiana.viewmodel.assignment.AssignmentViewModel;
 
-import org.w3c.dom.Text;
+import java.util.Calendar;
 
 public class AssignmentDescr extends AppCompatActivity {
     private static final String TAG = "AccountDetailActivity";
@@ -27,19 +33,26 @@ public class AssignmentDescr extends AppCompatActivity {
     private TextView note;
     private Spinner spinner;
     private Spinner spinner_type;
+    private Button delete;
+    private Button save;
+    private ImageButton date;
 
     private AssignmentViewModel viewModel;
+    DatePickerDialog.OnDateSetListener setListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_assignmentdescr);
+        setContentView(R.layout.activity_assignment_details);
 
         Long assignmentId = getIntent().getLongExtra("assignmentId",0L);
 
         descr = findViewById(R.id.description);
         course = findViewById(R.id.course);
         note = findViewById(R.id.note);
+        delete = findViewById(R.id.delete_assignment);
+        save = findViewById(R.id.save_assigment);
+        date = findViewById(R.id.date_assignment);
 
         spinner = (Spinner) findViewById(R.id.status);
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -63,6 +76,37 @@ public class AssignmentDescr extends AppCompatActivity {
             if (assignmentEntity!= null){
                 assigment= assignmentEntity;
                 updateContent();
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AssignmentDescr.this, Home.class));
+            }
+        });
+
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AssignmentDescr.this, Home.class));
+            }
+        });
+
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        date.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                {
+                    DatePickerDialog datePickerDialog = new DatePickerDialog(
+                            AssignmentDescr.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener, year, month, day);
+                    datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    datePickerDialog.show();
+
+                }
             }
         });
     }

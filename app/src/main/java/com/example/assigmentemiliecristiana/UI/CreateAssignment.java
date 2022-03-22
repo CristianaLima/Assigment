@@ -5,23 +5,32 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.assigmentemiliecristiana.R;
 
-public class AddAssignment extends AppCompatActivity {
+public class CreateAssignment extends AppCompatActivity {
 
     Button btn;
+    TextView date;
+    EditText name;
+    EditText course;
+    EditText description;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_assigment);
+        setContentView(R.layout.activity_create_assigment);
 
         btn = (Button) findViewById(R.id.create_button);
+        date = (TextView) findViewById(R.id.due_date);
+        name = (EditText) findViewById(R.id.name);
+        course = (EditText) findViewById(R.id.course);
+        description = (EditText) findViewById(R.id.description);
 
         Spinner spinner = (Spinner) findViewById(R.id.status);
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -41,7 +50,7 @@ public class AddAssignment extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AddAssignment.this, Home.class));
+                startActivity(new Intent(CreateAssignment.this, Home.class));
 
             }
         });
