@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    android:background="#f5f0e1"
+    android:background="@drawable/app_background"
     android:padding="16dp">
 
     <ImageView
@@ -47,11 +47,11 @@
         android:layout_alignParentEnd="true"
         android:layout_marginLeft="300dp"
         android:layout_marginTop="80dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="38dp"
         android:backgroundTint="#FF4962E8"
         android:contentDescription="date_button"
         android:padding="5dp"
-        android:src="@mipmap/calendar" />
+        android:src="@mipmap/acc_calendar" />
 
     <TextView
         android:id="@+id/homepage_date"

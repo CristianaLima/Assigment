@@ -33,8 +33,7 @@
         android:drawableStart="@drawable/username"
         android:drawablePadding="10dp"
         android:hint="Username"
-        android:textColorHint="#FBFBFB"
-         />
+        android:textColorHint="#FBFBFB" />
 
     <EditText
         android:id="@+id/input_Email"
