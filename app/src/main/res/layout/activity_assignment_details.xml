@@ -30,7 +30,7 @@
         android:textSize="20dp"
         android:textStyle="bold" />
 
-    <TextView
+    <EditText
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="55dp"
@@ -51,7 +51,7 @@
         android:textSize="18dp"
         android:textStyle="bold" />
 
-    <TextView
+    <EditText
         android:id="@+id/course"
         android:layout_width="match_parent"
         android:layout_height="55dp"
@@ -71,7 +71,7 @@
         android:textColor="@color/black"
         android:textStyle="bold" />
 
-    <TextView
+    <EditText
         android:id="@+id/note"
         android:layout_width="match_parent"
         android:layout_height="55dp"
