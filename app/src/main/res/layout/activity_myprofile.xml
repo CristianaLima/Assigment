@@ -78,12 +78,12 @@
         android:id="@+id/modify_account_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="290dp"
+        android:layout_marginTop="370dp"
         android:layout_marginBottom="150dp"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         android:text="Modify"
-        android:layout_marginTop="370dp"
-        android:layout_marginStart="290dp"
 
         />
 
@@ -91,9 +91,20 @@
         android:id="@+id/delete_account_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="370dp"
         android:layout_marginBottom="150dp"
         android:text="Delete" />
+
+    <Button
+        android:id="@+id/disconnect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="450dp"
+        android:layout_marginBottom="150dp"
+        android:backgroundTint="#531212"
+        android:text="Disconnect" />
 
 </RelativeLayout>
