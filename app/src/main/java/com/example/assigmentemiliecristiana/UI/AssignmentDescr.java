@@ -78,7 +78,7 @@ public class AssignmentDescr extends AppCompatActivity {
 
             ArrayAdapter arrayAdapter2 = (ArrayAdapter) spinner_type.getAdapter();
             int idType = arrayAdapter2.getPosition(assigment.getType());
-            spinner.setSelection(idType);
+            spinner_type.setSelection(idType);
 
             Log.i(TAG,"Activity populated.");
 

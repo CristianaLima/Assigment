@@ -47,8 +47,8 @@ public class DatabaseInitializer {
                         17).getTime(),"To do","Pattern");
 
         addAssignment(db,
-                "TEST","Examen","admin",
-                "Examen", new Date(2022,04,01).getTime(),"To do", "BPMNS");
+                "TEST","Exam","admin",
+                "Examen", new Date(2022,04,01).getTime(),"In Progress", "BPMNS");
     }
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
