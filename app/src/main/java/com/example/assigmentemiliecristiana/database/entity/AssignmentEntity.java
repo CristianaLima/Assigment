@@ -6,7 +6,6 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
-import java.util.Date;
 
 
 @Entity(tableName = "assignments",
@@ -28,6 +27,7 @@ public class AssignmentEntity implements Serializable {
     private Long id;
     private String name;
     private String type;
+    private String course;
     private String description;
     private Long date;
     private String status;
@@ -36,13 +36,22 @@ public class AssignmentEntity implements Serializable {
     public AssignmentEntity() {
     }
 
-    public AssignmentEntity(String name, String type, String description, Long date, String status, String owner) {
+    public AssignmentEntity(String name, String type, String description, Long date, String status, String owner, String course) {
         this.name = name;
         this.type = type;
         this.description = description;
         this.date = date;
         this.status = status;
         this.owner = owner;
+        this.course = course;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
     }
 
     public Long getId() {
@@ -114,5 +123,6 @@ public class AssignmentEntity implements Serializable {
     public String toString() {
         return name;
     }
+
 
 }

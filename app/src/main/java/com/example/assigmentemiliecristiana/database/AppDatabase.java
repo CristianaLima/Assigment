@@ -2,8 +2,13 @@ package com.example.assigmentemiliecristiana.database;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.room.AutoMigration;
 import androidx.room.DatabaseConfiguration;
+import androidx.room.DeleteTable;
 import androidx.room.InvalidationTracker;
+import androidx.room.RenameColumn;
+import androidx.room.migration.AutoMigrationSpec;
+import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.room.Database;
 import androidx.room.Room;
@@ -21,11 +26,12 @@ import com.example.assigmentemiliecristiana.database.entity.StudentEntity;
 
 import java.util.concurrent.Executors;
 
-@Database(entities = {AssignmentEntity.class, StudentEntity.class},version = 1)
+@Database(entities = {AssignmentEntity.class, StudentEntity.class},version = 2,exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
-    private static final String TAG = "AppDatabase";
 
+
+    private static final String TAG = "AppDatabase";
     private static AppDatabase instance;
 
     private static final String DATABASE_NAME = "assignment-database";
@@ -55,7 +61,7 @@ public abstract class AppDatabase extends RoomDatabase {
      */
     private static AppDatabase buildDatabase(final Context appContext) {
         Log.i(TAG, "Database will be initialized.");
-        return Room.databaseBuilder(appContext, AppDatabase.class, DATABASE_NAME)
+        return Room.databaseBuilder(appContext, AppDatabase.class, DATABASE_NAME).fallbackToDestructiveMigration()
                 .addCallback(new Callback() {
                     @Override
                     public void onCreate(@NonNull SupportSQLiteDatabase db) {
@@ -99,4 +105,9 @@ public abstract class AppDatabase extends RoomDatabase {
     public LiveData<Boolean> getDatabaseCreated() {
         return mIsDatabaseCreated;
     }
+
+
+
+
+
 }

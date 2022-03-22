@@ -24,8 +24,8 @@ public class DatabaseInitializer {
 
     private static void addAssignment(final AppDatabase db, final String name, final String type,
                                       final String owner, final String description,final Long date,
-                                      final String status) {
-        AssignmentEntity assignmentEntity = new AssignmentEntity(name,type,description,date,status,owner);
+                                      final String status, final String course) {
+        AssignmentEntity assignmentEntity = new AssignmentEntity(name,type,description,date,status,owner, course);
         db.assignmentDao().insert(assignmentEntity);
     }
 
@@ -42,13 +42,13 @@ public class DatabaseInitializer {
         }
 
         addAssignment(db,
-                "Pattern Projet", "Project", "admin",
+                "Projet Mediator", "Project", "admin",
                 "give back project",new Date(2022,03,
-                        17).getTime(),"To do");
+                        17).getTime(),"To do","Pattern");
 
         addAssignment(db,
-                "BPMNS TEST","Examen","admin",
-                "Examen", new Date(2022,04,01).getTime(),"To do");
+                "TEST","Examen","admin",
+                "Examen", new Date(2022,04,01).getTime(),"To do", "BPMNS");
     }
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
