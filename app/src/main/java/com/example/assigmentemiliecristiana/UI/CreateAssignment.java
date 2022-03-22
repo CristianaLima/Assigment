@@ -24,7 +24,7 @@ public class CreateAssignment extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_assigment);
+        setContentView(R.layout.create_assigment);
 
         btn = (Button) findViewById(R.id.create_button);
         date = (TextView) findViewById(R.id.due_date);

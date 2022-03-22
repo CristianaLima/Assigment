@@ -1,11 +1,9 @@
 package com.example.assigmentemiliecristiana.UI;
 //fjskdfgfdgfdfsddsa
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +29,7 @@ public class Register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.register);
 
          username = findViewById(R.id.input_Username);
          email_input = findViewById(R.id.input_Email);

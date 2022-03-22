@@ -22,7 +22,6 @@ import android.widget.Toast;
 import com.example.assigmentemiliecristiana.BaseApp;
 import com.example.assigmentemiliecristiana.R;
 import com.example.assigmentemiliecristiana.database.AppDatabase;
-import com.example.assigmentemiliecristiana.database.entity.StudentEntity;
 import com.example.assigmentemiliecristiana.database.repository.StudentRepository;
 
 public class LoginPage extends AppCompatActivity {
@@ -36,7 +35,7 @@ public class LoginPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.login);
 
           username = findViewById(R.id.username_login);
           password = findViewById(R.id.password);

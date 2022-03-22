@@ -51,7 +51,7 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.home);
 
         showAll = findViewById(R.id.show_all);
         homepage_date = findViewById(R.id.homepage_date);
@@ -69,7 +69,7 @@ public class Home extends AppCompatActivity {
         ImageButton calendar_button = (ImageButton) findViewById(R.id.date_button);
         FloatingActionButton profile_button = (FloatingActionButton) findViewById(R.id.profile_button);
         FloatingActionButton add_assignment = (FloatingActionButton) findViewById(R.id.add_assingment);
-        date_view =(TextView) findViewById(R.id.date_view);
+        date_view =(TextView) findViewById(R.id.show_all);
 
         assignments = new ArrayList<>();
         adapter = new RecyclerAdapter<>(new RecyclerViewItemClickListener() {

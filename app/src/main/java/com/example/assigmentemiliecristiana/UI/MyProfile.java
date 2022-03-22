@@ -18,7 +18,7 @@ public class MyProfile extends AppCompatActivity {
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_myprofile);
+        setContentView(R.layout.profile);
 
         Button modify = (Button)findViewById(R.id.modify_account_btn);
 
