@@ -1,20 +1,20 @@
 package com.example.assigmentemiliecristiana.UI;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.assigmentemiliecristiana.R;
 import com.example.assigmentemiliecristiana.database.entity.AssignmentEntity;
-import com.example.assigmentemiliecristiana.viewmodel.assignment.AssignmentListViewModel;
+import com.example.assigmentemiliecristiana.util.OnAsyncEventListener;
 import com.example.assigmentemiliecristiana.viewmodel.assignment.AssignmentViewModel;
-
-import org.w3c.dom.Text;
 
 public class AssignmentDescr extends AppCompatActivity {
     private static final String TAG = "AccountDetailActivity";
@@ -27,6 +27,9 @@ public class AssignmentDescr extends AppCompatActivity {
     private TextView note;
     private Spinner spinner;
     private Spinner spinner_type;
+    private String statut;
+    private String type;
+    private AlertDialog alertDialogStatus;
 
     private AssignmentViewModel viewModel;
 
@@ -65,6 +68,12 @@ public class AssignmentDescr extends AppCompatActivity {
                 updateContent();
             }
         });
+
+
+//        setButtonAlertDialogStatus(alertDialogStatus);
+//        spinner.onClick(alertDialogStatus,0);
+//        spinner.setOnItemClickListener((adapterView, view, position, id) -> modifyStatus());
+//        spinner_type.setOnItemClickListener((adapterView, view, i, l) -> modifyType() );
     }
     private void updateContent(){
         if (assigment!=null){
@@ -75,14 +84,67 @@ public class AssignmentDescr extends AppCompatActivity {
             ArrayAdapter arrayAdapter = (ArrayAdapter) spinner.getAdapter();
             int idStatut = arrayAdapter.getPosition(assigment.getStatus());
             spinner.setSelection(idStatut);
+            statut = spinner.getSelectedItem().toString();
 
             ArrayAdapter arrayAdapter2 = (ArrayAdapter) spinner_type.getAdapter();
             int idType = arrayAdapter2.getPosition(assigment.getType());
             spinner_type.setSelection(idType);
+            type = spinner_type.getSelectedItem().toString();
 
             Log.i(TAG,"Activity populated.");
 
         }
+    }
+
+    private void setButtonAlertDialogStatus(AlertDialog alertDialog){
+        alertDialog.setTitle("Change the statut");
+        alertDialog.setCancelable(false);
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Execute",new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                modifyStatus();
+            }
+        });
+    }
+
+
+    private void modifyStatus(){
+         if (!statut.equals(spinner.getSelectedItem())){
+             statut = spinner.getSelectedItem().toString();
+             assigment.setStatus(statut);
+             viewModel.updateAssignment(assigment, new OnAsyncEventListener() {
+                 @Override
+                 public void onSuccess() {
+                     Log.d(TAG,"updateAssigment: success");
+                 }
+
+                 @Override
+                 public void onFailure(Exception e) {
+                     Log.d(TAG,"updateAssigment: fail",e);
+                 }
+             });
+         }
+
+
+    }
+    private void modifyType(){
+        if (!type.equals(spinner_type.getSelectedItem())){
+            type = spinner_type.getSelectedItem().toString();
+            assigment.setType(type);
+            viewModel.updateAssignment(assigment, new OnAsyncEventListener() {
+                @Override
+                public void onSuccess() {
+                    Log.d(TAG,"updateAssigment: success");
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+                    Log.d(TAG,"updateAssigment: fail",e);
+                }
+            });
+        }
+
+
     }
 
 }
