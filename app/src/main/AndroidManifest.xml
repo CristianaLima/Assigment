@@ -10,6 +10,7 @@
         android:theme="@style/Theme.AssigmentEmilieCristiana"
         android:name=".BaseApp">
 
+
         <activity
             android:name=".UI.Home"
             android:label="AssingmentApp"
