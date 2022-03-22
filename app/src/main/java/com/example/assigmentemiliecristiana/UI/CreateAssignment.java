@@ -1,17 +1,23 @@
 package com.example.assigmentemiliecristiana.UI;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.assigmentemiliecristiana.R;
+
+import java.util.Calendar;
 
 public class CreateAssignment extends AppCompatActivity {
 
@@ -20,6 +26,7 @@ public class CreateAssignment extends AppCompatActivity {
     EditText name;
     EditText course;
     EditText description;
+    DatePickerDialog.OnDateSetListener setListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,25 @@ public class CreateAssignment extends AppCompatActivity {
                 R.array.type_list, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner_type.setAdapter(adapter2);
+
+        ImageButton calendar_button = (ImageButton) findViewById(R.id.create_date);
+
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        calendar_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                {
+                    DatePickerDialog datePickerDialog = new DatePickerDialog(
+                            CreateAssignment.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener, year, month, day);
+                    datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    datePickerDialog.show();
+
+                }
+            }
+        });
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
