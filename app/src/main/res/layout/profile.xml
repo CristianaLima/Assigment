@@ -19,7 +19,7 @@
         android:textSize="25dp"
         android:textStyle="bold" />
 
-    <EditText
+    <TextView
         android:id="@+id/input_Username"
         android:layout_width="match_parent"
         android:layout_height="55dp"
@@ -32,13 +32,15 @@
         android:drawablePadding="10dp"
         android:hint="Username"
         android:inputType="textPersonName"
+        android:gravity="center_vertical"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         android:textColor="#000000"
         android:textColorHint="#041F6C"
+        android:textSize="18dp"
         android:textStyle="bold" />
 
-    <EditText
+    <TextView
         android:id="@+id/input_Email"
         android:layout_width="match_parent"
         android:layout_height="55dp"
@@ -51,12 +53,14 @@
         android:drawablePadding="10dp"
         android:hint="Email"
         android:inputType="textPersonName"
+        android:gravity="center_vertical"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         android:textColorHint="#041F6C"
+        android:textSize="18dp"
         android:textStyle="bold" />
 
-    <EditText
+    <TextView
         android:id="@+id/input_Password"
         android:layout_below="@id/input_Email"
         android:layout_width="match_parent"
@@ -70,8 +74,10 @@
         android:drawableStart="@drawable/password"
         android:drawablePadding="10dp"
         android:hint="Password"
+        android:gravity="center_vertical"
         android:textStyle="bold"
         android:inputType="textPersonName|textPassword"
+        android:textSize="18dp"
         android:textColorHint="#041F6C" />
 
     <Button

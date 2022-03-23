@@ -28,7 +28,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class AssignmentDescr extends AppCompatActivity {
-    private static final String TAG = "AccountDetailActivity";
+    private static final String TAG = "AssignmentDetailActivity";
 
     private static final int EDIT_ACCOUNT = 1;
 

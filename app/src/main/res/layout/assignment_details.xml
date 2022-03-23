@@ -41,12 +41,12 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_baseline_notes_24"
-        android:scrollHorizontally="true"
-        android:gravity="center_vertical"
         android:drawablePadding="10dp"
+        android:gravity="center_vertical"
         android:inputType="textPersonName"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
+        android:scrollHorizontally="true"
         android:textColor="@color/black"
         android:textSize="18dp"
         android:textStyle="bold" />
@@ -61,14 +61,14 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_baseline_school_24"
-        android:scrollHorizontally="true"
-        android:gravity="center_vertical"
         android:drawablePadding="10dp"
+        android:gravity="center_vertical"
         android:inputType="textPersonName"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:textSize="18dp"
+        android:scrollHorizontally="true"
         android:textColor="@color/black"
+        android:textSize="18dp"
         android:textStyle="bold" />
 
     <EditText
@@ -81,16 +81,16 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_baseline_read_more_24"
-        android:scrollHorizontally="true"
-        android:gravity="center_vertical"
         android:drawablePadding="10dp"
         android:ems="10"
+        android:gravity="center_vertical"
         android:inputType="textPersonName"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
+        android:scrollHorizontally="true"
+        android:textColor="@color/black"
         android:textSize="18dp"
-        android:textStyle="bold"
-        android:textColor="@color/black" />
+        android:textStyle="bold" />
 
     <ImageButton
         android:id="@+id/date_assignment"

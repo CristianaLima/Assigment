@@ -109,7 +109,9 @@ public class Home extends AppCompatActivity {
         profile_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Home.this, MyProfile.class));
+                Intent intent = new Intent(Home.this, MyProfile.class);
+                intent.putExtra("username",user);
+                startActivity(intent);
 
             }
         });
