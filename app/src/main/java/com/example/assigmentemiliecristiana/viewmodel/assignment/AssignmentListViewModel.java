@@ -58,7 +58,4 @@ public class AssignmentListViewModel extends AndroidViewModel {
 
     public LiveData<List<AssignmentEntity>> getOwnAssignments(){return observableOwnAssignments;}
 
-    public void deleteAssignment(AssignmentEntity assignment, OnAsyncEventListener callback){
-        repository.delete(assignment,callback,application);
-    }
 }

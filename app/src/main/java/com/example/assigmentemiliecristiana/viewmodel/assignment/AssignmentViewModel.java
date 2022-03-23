@@ -65,4 +65,8 @@ public class AssignmentViewModel extends AndroidViewModel {
     public void updateAssignment(AssignmentEntity assignment, OnAsyncEventListener callback){
         repository.update(assignment,callback,application);
     }
+
+    public void deleteAssignment(AssignmentEntity assignment, OnAsyncEventListener callback){
+        repository.delete(assignment,callback,application);
+    }
 }

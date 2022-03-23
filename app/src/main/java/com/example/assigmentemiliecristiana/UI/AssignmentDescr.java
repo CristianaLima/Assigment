@@ -89,12 +89,7 @@ public class AssignmentDescr extends AppCompatActivity {
             }
         });
 
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(AssignmentDescr.this, Home.class));
-            }
-        });
+        delete.setOnClickListener(view -> deleteAssignment());
 
         save.setOnClickListener(view -> saveChange());
 
@@ -191,6 +186,35 @@ public class AssignmentDescr extends AppCompatActivity {
     private void setResponse(Boolean response){
         if(response){
             Toast toast = Toast.makeText(this,"Assignment modify",Toast.LENGTH_LONG);
+            toast.show();
+            startActivity(new Intent(AssignmentDescr.this, Home.class));
+        }
+        else{
+            Toast toast = Toast.makeText(this,"Fail",Toast.LENGTH_LONG);
+            toast.show();
+        }
+    }
+
+    private void deleteAssignment(){
+        AssignmentViewModel.Factory factory = new AssignmentViewModel.Factory(getApplication(),assignmentId);
+        viewModel = new ViewModelProvider(this,factory).get(AssignmentViewModel.class);
+        viewModel.deleteAssignment(assigment, new OnAsyncEventListener() {
+            @Override
+            public void onSuccess() {
+                Log.d(TAG,"Delete assignment success");
+                setResponseD(true);
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Log.d(TAG,"Delete assignment fail");
+                setResponseD(false);
+            }
+        });
+    }
+    private void setResponseD(Boolean response){
+        if(response){
+            Toast toast = Toast.makeText(this,"Assignment deleted",Toast.LENGTH_LONG);
             toast.show();
             startActivity(new Intent(AssignmentDescr.this, Home.class));
         }
