@@ -22,8 +22,7 @@ public class CreateStudent extends AsyncTask<StudentEntity, Void, Void> {
     protected Void doInBackground(StudentEntity... params) {
         try {
             for (StudentEntity studentEntity : params)
-                ((BaseApp) application).getDatabase().studentDao()
-                        .insert(studentEntity);
+                ((BaseApp) application).getDatabase().studentDao().insert(studentEntity);
         } catch (Exception e) {
             exception = e;
         }

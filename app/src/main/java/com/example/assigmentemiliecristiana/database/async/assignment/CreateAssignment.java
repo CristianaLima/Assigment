@@ -29,7 +29,7 @@ public class CreateAssignment extends AsyncTask<AssignmentEntity, Void, Void> {
     }
 
     @Override
-    protected void onPostExecute(Void unused) {
+    protected void onPostExecute(Void aVoid) {
         if (callback != null) {
             if (exception == null) {
                 callback.onSuccess();

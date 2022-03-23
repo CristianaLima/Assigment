@@ -40,11 +40,13 @@ public class Home extends AppCompatActivity {
     private List<AssignmentEntity> assignments;
     private AssignmentListViewModel viewModel;
     private AssignmentListDateViewModel dateViewModel;
+    private RecyclerView recyclerView;
+    private String user;
 
-    Button showAll;
-    TextView date_view;
-    TextView homepage_date;
-    DatePickerDialog.OnDateSetListener setListener;
+    private Button showAll;
+    private TextView date_view;
+    private TextView homepage_date;
+    private DatePickerDialog.OnDateSetListener setListener;
 
     private RecyclerAdapter <AssignmentEntity> adapter;
 
@@ -55,7 +57,7 @@ public class Home extends AppCompatActivity {
 
         showAll = findViewById(R.id.show_all);
         homepage_date = findViewById(R.id.homepage_date);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.home_list);
+        recyclerView = (RecyclerView) findViewById(R.id.home_list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -64,7 +66,7 @@ public class Home extends AppCompatActivity {
         recyclerView.addItemDecoration(dividerItemDecoration);
 
        SharedPreferences settings = getSharedPreferences(Home.PREFS_NAME, 0);
-       String user = settings.getString(Home.PREFS_USER,null);
+       user = settings.getString(Home.PREFS_USER,null);
 
         ImageButton calendar_button = (ImageButton) findViewById(R.id.date_button);
         FloatingActionButton profile_button = (FloatingActionButton) findViewById(R.id.profile_button);
@@ -87,24 +89,8 @@ public class Home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        AssignmentListViewModel.Factory factory = new AssignmentListViewModel.Factory(getApplication(),user);
-        viewModel = new ViewModelProvider(this,factory).get(AssignmentListViewModel.class);
+        getInitialData();
 
-        viewModel.getOwnAssignments().observe(this,assignmentEntities -> {
-            if(assignmentEntities!=null){
-                assignments=assignmentEntities;
-                adapter.setData(assignments);
-            }
-        });
-
-        recyclerView.setAdapter(adapter);
-
-       /* ArrayList<String> arrayList = new ArrayList<String>();
-
-
-        arrayList.add("Android studio home page");
-        arrayList.add("Decorator pattern exo 2");
-        arrayList.add("Go to the gym");*/
 
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
@@ -115,8 +101,9 @@ public class Home extends AppCompatActivity {
         add_assignment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Home.this, CreateAssignment.class));
-            }
+                Intent intent = new Intent(Home.this, CreateAssignment.class);
+                intent.putExtra("username", user);
+                startActivity(intent);            }
         });
 
         profile_button.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +113,8 @@ public class Home extends AppCompatActivity {
 
             }
         });
+
+        showAll.setOnClickListener(view -> getInitialData());
 
         calendar_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -162,6 +151,22 @@ public class Home extends AppCompatActivity {
             }
         };
 
+    }
+
+    private void getInitialData(){
+        AssignmentListViewModel.Factory factory = new AssignmentListViewModel.Factory(getApplication(),user);
+        viewModel = new ViewModelProvider(this,factory).get(AssignmentListViewModel.class);
+
+        viewModel.getOwnAssignments().observe(this,assignmentEntities -> {
+            if(assignmentEntities!=null){
+                assignments=assignmentEntities;
+                adapter.setData(assignments);
+            }
+        });
+
+        recyclerView.setAdapter(adapter);
+
+        homepage_date.setText("");
     }
 
 }

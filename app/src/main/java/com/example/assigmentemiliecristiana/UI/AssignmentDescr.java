@@ -32,7 +32,7 @@ public class AssignmentDescr extends AppCompatActivity {
 
     private static final int EDIT_ACCOUNT = 1;
 
-    private AssignmentEntity assigment;
+    private AssignmentEntity assignment;
     private EditText descr;
     private EditText course;
     private EditText note;
@@ -84,7 +84,7 @@ public class AssignmentDescr extends AppCompatActivity {
         viewModel = new ViewModelProvider(this,factory).get(AssignmentViewModel.class);
         viewModel.getAssignment().observe(this,assignmentEntity -> {
             if (assignmentEntity!= null){
-                assigment= assignmentEntity;
+                assignment = assignmentEntity;
                 updateContent();
             }
         });
@@ -121,22 +121,22 @@ public class AssignmentDescr extends AppCompatActivity {
         };
     }
     private void updateContent(){
-        if (assigment!=null){
-            descr.setText(assigment.getName());
-            course.setText(assigment.getCourse());
-            note.setText(assigment.getDescription());
+        if (assignment !=null){
+            descr.setText(assignment.getName());
+            course.setText(assignment.getCourse());
+            note.setText(assignment.getDescription());
 
             ArrayAdapter arrayAdapter = (ArrayAdapter) spinner.getAdapter();
-            int idStatut = arrayAdapter.getPosition(assigment.getStatus());
+            int idStatut = arrayAdapter.getPosition(assignment.getStatus());
             spinner.setSelection(idStatut);
 
             ArrayAdapter arrayAdapter2 = (ArrayAdapter) spinner_type.getAdapter();
-            int idType = arrayAdapter2.getPosition(assigment.getType());
+            int idType = arrayAdapter2.getPosition(assignment.getType());
             spinner_type.setSelection(idType);
 
-            dateL=assigment.getDate();
+            dateL= assignment.getDate();
             Date date = new Date();
-            date.setTime(assigment.getDate());
+            date.setTime(assignment.getDate());
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
              int year = calendar.get(Calendar.YEAR);
@@ -158,17 +158,17 @@ public class AssignmentDescr extends AppCompatActivity {
        String status = spinner.getSelectedItem().toString();
        String type = spinner_type.getSelectedItem().toString();
 
-       assigment.setName(name);
-       assigment.setCourse(courseA);
-       assigment.setDescription(description);
-       assigment.setStatus(status);
-       assigment.setType(type);
-       assigment.setDate(dateL);
+       assignment.setName(name);
+       assignment.setCourse(courseA);
+       assignment.setDescription(description);
+       assignment.setStatus(status);
+       assignment.setType(type);
+       assignment.setDate(dateL);
 
         AssignmentViewModel.Factory factory = new AssignmentViewModel.Factory(
                 getApplication(),assignmentId);
         viewModel = new ViewModelProvider(this,factory).get(AssignmentViewModel.class);
-        viewModel.updateAssignment(assigment, new OnAsyncEventListener() {
+        viewModel.updateAssignment(assignment, new OnAsyncEventListener() {
             @Override
             public void onSuccess() {
                 Log.d(TAG,"Modify assignment success");
@@ -198,7 +198,7 @@ public class AssignmentDescr extends AppCompatActivity {
     private void deleteAssignment(){
         AssignmentViewModel.Factory factory = new AssignmentViewModel.Factory(getApplication(),assignmentId);
         viewModel = new ViewModelProvider(this,factory).get(AssignmentViewModel.class);
-        viewModel.deleteAssignment(assigment, new OnAsyncEventListener() {
+        viewModel.deleteAssignment(assignment, new OnAsyncEventListener() {
             @Override
             public void onSuccess() {
                 Log.d(TAG,"Delete assignment success");
