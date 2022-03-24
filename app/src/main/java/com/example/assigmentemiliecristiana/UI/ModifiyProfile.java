@@ -124,7 +124,9 @@ public class ModifiyProfile extends AppCompatActivity {
         if(response){
             Toast toast = Toast.makeText(this,"Student modified",Toast.LENGTH_LONG);
             toast.show();
-            startActivity(new Intent(ModifiyProfile.this, MyProfile.class));
+            Intent intent = new Intent(ModifiyProfile.this, MyProfile.class);
+            intent.putExtra("username", username);
+            startActivity(intent);
         }
         else{
             usernameDisplay.setError("Username already used");
