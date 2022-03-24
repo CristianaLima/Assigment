@@ -31,6 +31,7 @@ public class MyProfile extends AppCompatActivity {
     private Button deleteProfile;
     private Button modify;
     private Button logout;
+    private Button help;
 
     private StudentViewModel viewModel;
     private StudentEntity student;
@@ -48,6 +49,7 @@ public class MyProfile extends AppCompatActivity {
         deleteProfile = findViewById(R.id.delete_account_btn);
         logout = findViewById(R.id.disconnect);
         modify = (Button)findViewById(R.id.modify_account_btn);
+        help = (Button)findViewById(R.id.help);
 
         modify.setOnClickListener(new View.OnClickListener() {
             @Override
