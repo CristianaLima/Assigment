@@ -1,19 +1,26 @@
 package com.example.assigmentemiliecristiana.UI;
 
+import static com.example.assigmentemiliecristiana.database.AppDatabase.initializeDemoData;
+
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.ui.AppBarConfiguration;
 
 import com.example.assigmentemiliecristiana.R;
+import com.example.assigmentemiliecristiana.database.AppDatabase;
 import com.example.assigmentemiliecristiana.database.entity.StudentEntity;
 import com.example.assigmentemiliecristiana.util.OnAsyncEventListener;
 import com.example.assigmentemiliecristiana.viewmodel.assignment.AssignmentViewModel;
@@ -50,6 +57,8 @@ public class MyProfile extends AppCompatActivity {
         logout = findViewById(R.id.disconnect);
         modify = (Button)findViewById(R.id.modify_account_btn);
         help = (Button)findViewById(R.id.help);
+
+        help.setOnClickListener(view -> help());
 
         modify.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,4 +124,14 @@ public class MyProfile extends AppCompatActivity {
             toast.show();
         }
     }
+
+    private void help(){
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("About");
+        alertDialog.setCancelable(false);
+        alertDialog.setMessage("This project has been done to understand how Android Studio work and to implement the different architectures patterns that we have learned.");
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,"Ok",(dialog, which)->alertDialog.dismiss());
+        alertDialog.show();
+    }
+
 }

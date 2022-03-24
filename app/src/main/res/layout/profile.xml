@@ -89,7 +89,7 @@
         android:layout_marginBottom="150dp"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:text="Help"
+        android:text="About"
 
         />
 
