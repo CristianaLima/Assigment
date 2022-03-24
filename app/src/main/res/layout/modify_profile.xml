@@ -24,16 +24,16 @@
         android:layout_height="55dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="150dp"
-        android:layout_marginBottom="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/custom_input"
         android:hint="Username"
         android:inputType="textPersonName"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:textSize="18dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
+        android:textSize="18dp"
         android:textStyle="bold" />
 
     <EditText
@@ -56,21 +56,21 @@
 
     <EditText
         android:id="@+id/input_Password"
-        android:layout_below="@id/input_Email"
         android:layout_width="match_parent"
         android:layout_height="55dp"
+        android:layout_below="@id/input_Email"
         android:layout_marginStart="11dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
         android:background="@drawable/custom_input"
         android:hint="Password"
-        android:textStyle="bold"
         android:inputType="textPersonName|textPassword"
-        android:textSize="18dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         android:textColor="@color/black"
-        android:textColorHint="@color/black"/>
+        android:textColorHint="@color/black"
+        android:textSize="18dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/input_ConfirmPassword"
@@ -85,9 +85,9 @@
         android:inputType="textPersonName|textPassword"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:textSize="18dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
+        android:textSize="18dp"
         android:textStyle="bold" />
 
     <Button
