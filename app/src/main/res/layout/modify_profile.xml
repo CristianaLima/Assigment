@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f5f0e1">
+    android:background="@drawable/app_background">
 
     <TextView
         android:id="@+id/title_myprofile"
@@ -31,8 +31,9 @@
         android:inputType="textPersonName"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:textColor="#000000"
-        android:textColorHint="#041F6C"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textStyle="bold" />
 
     <EditText
@@ -48,7 +49,9 @@
         android:inputType="textPersonName"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:textColorHint="#041F6C"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="18dp"
         android:textStyle="bold" />
 
     <EditText
@@ -65,7 +68,9 @@
         android:hint="Password"
         android:textStyle="bold"
         android:inputType="textPersonName|textPassword"
-        android:textColorHint="#041F6C" />
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"/>
 
     <EditText
         android:id="@+id/input_ConfirmPassword"
@@ -75,13 +80,15 @@
         android:layout_marginStart="11dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
         android:background="@drawable/custom_input"
         android:hint="Confirm password"
-        android:textStyle="bold"
         android:inputType="textPersonName|textPassword"
-        android:textColorHint="#041F6C" />
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/apply_btn"
