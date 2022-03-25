@@ -5,7 +5,9 @@ import android.app.Application;
 import com.example.assigmentemiliecristiana.database.AppDatabase;
 import com.example.assigmentemiliecristiana.database.repository.AssignmentRepository;
 import com.example.assigmentemiliecristiana.database.repository.StudentRepository;
-
+/**
+ * Android Application class. Used for accessing singletons.
+ */
 public class BaseApp extends Application {
 
     @Override

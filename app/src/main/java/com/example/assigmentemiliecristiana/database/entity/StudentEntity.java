@@ -8,6 +8,14 @@ import androidx.annotation.NonNull;
 
 import java.util.Objects;
 
+/**
+ * https://developer.android.com/reference/android/arch/persistence/room/Entity.html
+ *
+ * Further information to Parcelable:
+ * https://developer.android.com/reference/android/os/Parcelable
+ * Why we use Parcelable over Serializable:
+ * https://android.jlelse.eu/parcelable-vs-serializable-6a2556d51538
+ */
 @Entity(tableName = "students", primaryKeys = {"username"})
 public class StudentEntity {
 

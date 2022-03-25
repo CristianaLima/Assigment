@@ -18,31 +18,31 @@
             android:theme="@style/Theme.AssigmentEmilieCristiana"/>
 
         <activity
-            android:name=".UI.CreateAssignment"
+            android:name=".UI.Assignment.CreateAssignment"
             android:label="@string/app_name"
             android:theme="@style/Theme.AssigmentEmilieCristiana"/>
         <activity
-            android:name=".UI.LoginPage"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AssigmentEmilieCristiana"/>
-
-        <activity
-            android:name=".UI.ModifiyProfile"
+            android:name=".UI.Login.LoginPage"
             android:label="@string/app_name"
             android:theme="@style/Theme.AssigmentEmilieCristiana"/>
 
         <activity
-            android:name=".UI.AssignmentDescr"
+            android:name=".UI.Profile.ModifiyProfile"
             android:label="@string/app_name"
             android:theme="@style/Theme.AssigmentEmilieCristiana"/>
 
         <activity
-            android:name=".UI.MyProfile"
+            android:name=".UI.Assignment.AssignmentDescr"
             android:label="@string/app_name"
             android:theme="@style/Theme.AssigmentEmilieCristiana"/>
 
         <activity
-            android:name=".UI.Register"
+            android:name=".UI.Profile.MyProfile"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AssigmentEmilieCristiana"/>
+
+        <activity
+            android:name=".UI.Login.Register"
             android:label="@string/app_name"
             android:theme="@style/Theme.AssigmentEmilieCristiana.NoActionBar"/>
 

@@ -18,7 +18,7 @@ import java.util.List;
 public class AssignmentListDateViewModel extends AndroidViewModel {
     private Application application;
     private AssignmentRepository repository;
-
+    // MediatorLiveData can observe other LiveData objects and react on their emissions.
     private final MediatorLiveData<List<AssignmentEntity>> observableDateAssignments;
 
     public AssignmentListDateViewModel(@NonNull Application application,
@@ -29,14 +29,18 @@ public class AssignmentListDateViewModel extends AndroidViewModel {
         repository= assignmentRepository;
 
         observableDateAssignments = new MediatorLiveData<>();
+        // set by default null, until we get data from the database.
         observableDateAssignments.setValue(null);
 
         LiveData<List<AssignmentEntity>> dateAssignments = repository.getByDate(ownerId,date,application);
-
+        // observe the changes of the assignment entity from the database and forward them
         observableDateAssignments.addSource(dateAssignments, observableDateAssignments::setValue);
 
     }
 
+    /**
+     * A creator is used to inject the account id into the ViewModel
+     */
     public static class Factory extends ViewModelProvider.NewInstanceFactory{
         @NonNull
         private final Application application;
@@ -53,10 +57,14 @@ public class AssignmentListDateViewModel extends AndroidViewModel {
 
         @Override
         public <T extends ViewModel> T create(Class<T> modelClass) {
+            //noinspection unchecked
             return (T) new AssignmentListDateViewModel(application,ownerId,date,assignmentRepository);
         }
     }
 
+    /**
+     * Expose the LiveData AssignmentEntity query so the UI can observe it.
+     */
     public LiveData<List<AssignmentEntity>> getDateAssignments(){return observableDateAssignments;}
 
 }

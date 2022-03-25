@@ -8,6 +8,9 @@ import com.example.assigmentemiliecristiana.database.entity.StudentEntity;
 
 import java.util.Date;
 
+/**
+ * Generates dummy data
+ */
 public class DatabaseInitializer {
     public static final String TAG = "DatabaseInitializer";
 

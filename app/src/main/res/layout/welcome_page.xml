@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_background"
-    tools:context=".UI.LoginPage">
+    tools:context=".UI.Login.LoginPage">
 
     <ImageView
         android:id="@+id/homework_icon"

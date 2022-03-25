@@ -7,7 +7,18 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
-
+/**
+ * https://developer.android.com/reference/android/arch/persistence/room/Entity.html
+ *
+ * interesting: owner column references a foreign key, that's why this column is indexed.
+ * If not indexed, it might trigger full table scans whenever parent table is modified so you are
+ * highly advised to create an index that covers this column.
+ *
+ * Further information to Parcelable:
+ * https://developer.android.com/reference/android/os/Parcelable
+ * Why we use Parcelable over Serializable:
+ * https://android.jlelse.eu/parcelable-vs-serializable-6a2556d51538
+ */
 @Entity(tableName = "assignments",
         foreignKeys =
         @ForeignKey(

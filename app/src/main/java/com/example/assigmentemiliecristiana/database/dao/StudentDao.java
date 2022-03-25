@@ -14,6 +14,9 @@ import com.example.assigmentemiliecristiana.database.entity.StudentEntity;
 
 import java.util.List;
 
+/**
+ * https://developer.android.com/topic/libraries/architecture/room.html#no-object-references
+ */
 @Dao
 public interface StudentDao {
 

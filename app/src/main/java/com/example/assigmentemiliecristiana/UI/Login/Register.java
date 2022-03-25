@@ -1,5 +1,5 @@
-package com.example.assigmentemiliecristiana.UI;
-//fjskdfgfdgfdfsddsa
+package com.example.assigmentemiliecristiana.UI.Login;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,28 +16,33 @@ import com.example.assigmentemiliecristiana.database.async.student.CreateStudent
 import com.example.assigmentemiliecristiana.database.entity.StudentEntity;
 import com.example.assigmentemiliecristiana.util.OnAsyncEventListener;
 
+/**
+ * this activity is for create a account
+ */
 public class Register extends AppCompatActivity {
 
     private static final String TAG = "RegisterActivity";
 
-    private AppBarConfiguration appBarConfiguration;
-    TextView password;
-    TextView email_input;
-    TextView username;
-    TextView confirmP;
+    private TextView password;
+    private TextView email_input;
+    private TextView username;
+    private TextView confirmP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //link this activity with the layout
         setContentView(R.layout.register);
 
-         username = findViewById(R.id.input_Username);
-         email_input = findViewById(R.id.input_Email);
+        //link the variables in this activity with that in the layout
+        username = findViewById(R.id.input_Username);
+        email_input = findViewById(R.id.input_Email);
         password = findViewById(R.id.input_Password);
         confirmP = findViewById(R.id.input_ConfirmPassword);
+        Button registerbtn = findViewById(R.id.register_btn);
 
-        Button registerbtn = (Button) findViewById(R.id.register_btn);
-
+        //set what to do when you click on the register button
+        //the saveChange method is a external method which is below
         registerbtn.setOnClickListener(view -> saveChange(
             username.getText().toString(),
             email_input.getText().toString(),
@@ -47,22 +52,31 @@ public class Register extends AppCompatActivity {
 
     }
 
-    private void saveChange(String username, String email, String password1, String password2){
-        if(!password1.equals(password2)||password1.length()<4){
+    /**
+     * This will create a new student
+     * @param username
+     * @param email
+     * @param pwd password
+     * @param pwdConf confirm password
+     */
+    private void saveChange(String username, String email, String pwd, String pwdConf){
+        //see if the password is not equals to the confirm password and if it is not more that 4 characters
+        if(!pwd.equals(pwdConf)||pwd.length()<4){
             password.setError("Password is invalid");
             password.requestFocus();
             password.setText("");
             confirmP.setText("");
             return;
         }
-
+        //see if the email is not put correctly
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             email_input.setError("Invalid email");
             email_input.requestFocus();
             return;
         }
 
-        StudentEntity newStudent = new StudentEntity(username,email,password1);
+        //it will create a new student
+        StudentEntity newStudent = new StudentEntity(username,email,pwd);
         new CreateStudent(getApplication(), new OnAsyncEventListener() {
             @Override
             public void onSuccess() {
@@ -78,14 +92,21 @@ public class Register extends AppCompatActivity {
         }).execute(newStudent);
     }
 
+    /**
+     * what to do after create a student
+     * @param response
+     */
     private void setResponse(Boolean response){
         if(response){
+            //display a little message to say that the client is created
             Toast toast = Toast.makeText(this,"Client created",Toast.LENGTH_LONG);
             toast.show();
+            //go to LoginPage
             Intent intent = new Intent(Register.this, LoginPage.class);
             startActivity(intent);
         }
         else{
+            //display a little error message to say that the username is already use
             username.setError("Username already used");
             username.requestFocus();
         }

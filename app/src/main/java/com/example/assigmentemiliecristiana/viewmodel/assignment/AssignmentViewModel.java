@@ -19,7 +19,7 @@ import java.util.List;
 public class AssignmentViewModel extends AndroidViewModel {
     private Application application;
     private AssignmentRepository repository;
-
+    // MediatorLiveData can observe other LiveData objects and react on their emissions.
     private final MediatorLiveData<AssignmentEntity> observableAssigment;
 
     public AssignmentViewModel(@NonNull Application application,
@@ -31,13 +31,17 @@ public class AssignmentViewModel extends AndroidViewModel {
         repository = assignmentRepository;
 
         observableAssigment = new MediatorLiveData<>();
+        // set by default null, until we get data from the database.
         observableAssigment.setValue(null);
 
         LiveData<AssignmentEntity> assignment = repository.getAssignment(ownerId,application);
-
+        // observe the changes of the assignment entity from the database and forward them
         observableAssigment.addSource(assignment,observableAssigment::setValue);
     }
 
+    /**
+     * A creator is used to inject the account id into the ViewModel
+     */
     public static class Factory extends ViewModelProvider.NewInstanceFactory{
         @NonNull
         private final Application application;
@@ -52,10 +56,14 @@ public class AssignmentViewModel extends AndroidViewModel {
 
         @Override
         public <T extends ViewModel> T create( Class<T> modelClass) {
+            //noinspection unchecked
             return (T) new AssignmentViewModel(application,assignmentId,repository);
         }
     }
 
+    /**
+     * Expose the LiveData AssignmentEntity query so the UI can observe it.
+     */
     public LiveData<AssignmentEntity> getAssignment(){return observableAssigment;}
 
     public void createAssignment(AssignmentEntity assignment, OnAsyncEventListener callback){

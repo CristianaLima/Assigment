@@ -1,4 +1,4 @@
-package com.example.assigmentemiliecristiana.UI;
+package com.example.assigmentemiliecristiana.UI.Profile;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,10 +6,8 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,6 +23,9 @@ import com.example.assigmentemiliecristiana.database.entity.StudentEntity;
 import com.example.assigmentemiliecristiana.util.OnAsyncEventListener;
 import com.example.assigmentemiliecristiana.viewmodel.student.StudentViewModel;
 
+/**
+ * this activity is for modify the profile of the user
+ */
 public class ModifiyProfile extends AppCompatActivity {
     private static final String TAG = "ModifyProfileActivity";
 
@@ -35,7 +36,6 @@ public class ModifiyProfile extends AppCompatActivity {
     private EditText pwdConfDisplay;
     private Button apply;
     private String username;
-    private String user;
 
     private StudentViewModel viewModel;
     private StudentEntity student;
@@ -43,7 +43,9 @@ public class ModifiyProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //link this activity with the layout
         setContentView(R.layout.modify_profile);
+        //go research the username of the user
         username = getIntent().getStringExtra("username");
 
         //use ActionBar utility methods
@@ -54,22 +56,26 @@ public class ModifiyProfile extends AppCompatActivity {
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
-
+        //link the variables in this activity with that in the layout
         usernameDisplay = findViewById(R.id.input_Username);
         mailDisplay = findViewById(R.id.input_Email);
         pwdDisplay = findViewById(R.id.input_Password);
         pwdConfDisplay = findViewById(R.id.input_ConfirmPassword);
-        apply = (Button) findViewById(R.id.apply_btn);
+        apply = findViewById(R.id.apply_btn);
 
+        //go research the student information from the database
         StudentViewModel.Factory factory = new StudentViewModel.Factory(getApplication(),username);
         viewModel = new ViewModelProvider(this,factory).get(StudentViewModel.class);
         viewModel.getStudent().observe(this, studentEntity -> {
             if (studentEntity!= null){
                 student = studentEntity;
+                //It's a external method which is below
                 setContent();
             }
         });
 
+        //set what to do when you click on the apply button
+        //the saveModification method is a external method which is below
         apply.setOnClickListener(view -> saveModification(
                 usernameDisplay.getText().toString(),
                 mailDisplay.getText().toString(),
@@ -79,12 +85,23 @@ public class ModifiyProfile extends AppCompatActivity {
 
     }
 
+    /**
+     * this method is use to display the content of the page
+     */
     private void setContent(){
         usernameDisplay.setText(student.getUsername());
         mailDisplay.setText(student.getEmail());
     }
 
+    /**
+     * this method is use to see if it is a little modification or create a new user + delete the current one
+     * @param username
+     * @param email
+     * @param pwd password
+     * @param pwdConf confirm password
+     */
     private void saveModification(String username, String email, String pwd, String pwdConf){
+        //see if the password is not equals to the confirm password and if it is not more that 4 characters
         if (!pwd.equals(pwdConf) || pwd.length()<4){
             pwdDisplay.setError("Password is invalid");
             pwdDisplay.requestFocus();
@@ -92,14 +109,29 @@ public class ModifiyProfile extends AppCompatActivity {
             pwdConfDisplay.setText("");
             return;
         }
+        //see if the email is not put correctly
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             mailDisplay.setError("Invalid email");
             mailDisplay.requestFocus();
             return;
         }
 
+        //see if the username is same as before the changes
         if (!username.equals(student.getUsername())){
+            //delete the current student
+            viewModel.deleteStudent(student, new OnAsyncEventListener() {
+                @Override
+                public void onSuccess() {
+                    Log.d(TAG,"Delete user profile succeed");
+                }
 
+                @Override
+                public void onFailure(Exception e) {
+                    Log.d(TAG,"Delete user profile failed", e);
+                }
+            });
+
+            //create a new one
             StudentEntity newStudent = new StudentEntity(username,email,pwd);
             new CreateStudent(getApplication(), new OnAsyncEventListener() {
                 @Override
@@ -115,11 +147,16 @@ public class ModifiyProfile extends AppCompatActivity {
                 }
             }).execute(newStudent);
 
+            student.setUsername(username);
+            this.username = username;
+
         }
 
+        //set the new data
         student.setEmail(email);
         student.setPassword(pwd);
 
+        //update the student
         viewModel.updateStudent(student, new OnAsyncEventListener() {
             @Override
             public void onSuccess() {
@@ -135,10 +172,18 @@ public class ModifiyProfile extends AppCompatActivity {
         });
 
     }
+
+    /**
+     * what to do after update or create data
+     * @param response
+     */
     private void setResponse(Boolean response){
         if(response){
+            //display a little message to say that the profile is modified
             Toast toast = Toast.makeText(this,"Student modified",Toast.LENGTH_LONG);
             toast.show();
+
+            //go to MyProfile with the username of the user
             Intent intent = new Intent(ModifiyProfile.this, MyProfile.class);
             intent.putExtra("username", username);
             startActivity(intent);
@@ -149,8 +194,10 @@ public class ModifiyProfile extends AppCompatActivity {
         }
     }
 
-    // method to inflate the options menu when
-    // the user opens the menu for the first time
+    /**
+     * method to inflate the options menu when
+     * the user opens the menu for the first time
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -158,14 +205,16 @@ public class ModifiyProfile extends AppCompatActivity {
 
     }
 
-    // methods to control the operations that will
-    // happen when user clicks on the action buttons
+    /**
+     * methods to control the operations that will
+     * happen when user clicks on the action buttons
+     */
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
             case R.id.profile_taskbar:
                 Intent intent = new Intent(ModifiyProfile.this, MyProfile.class);
-                intent.putExtra("username", user);
+                intent.putExtra("username", username);
                 startActivity(intent);
                 break;
 

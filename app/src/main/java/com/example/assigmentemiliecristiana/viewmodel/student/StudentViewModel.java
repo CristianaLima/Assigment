@@ -19,6 +19,7 @@ public class StudentViewModel extends AndroidViewModel {
 
     private StudentRepository repository;
     private Application application;
+    // MediatorLiveData can observe other LiveData objects and react on their emissions.
     private final MediatorLiveData<StudentEntity> observableStudent;
 
     public StudentViewModel(@NonNull Application application,
@@ -28,13 +29,18 @@ public class StudentViewModel extends AndroidViewModel {
         this.application = application;
 
         observableStudent = new MediatorLiveData<>();
+        // set by default null, until we get data from the database.
         observableStudent.setValue(null);
 
         LiveData<StudentEntity> student = repository.getStudent(studentId,application);
 
+        // observe the changes of the student entity from the database and forward them
         observableStudent.addSource(student,observableStudent::setValue);
     }
 
+    /**
+     * A creator is used to inject the account id into the ViewModel
+     */
     public static class Factory extends ViewModelProvider.NewInstanceFactory{
         @NonNull
         private final Application application;
@@ -50,10 +56,14 @@ public class StudentViewModel extends AndroidViewModel {
 
         @Override
         public <T extends ViewModel> T create(Class<T> modelClass) {
+            //noinspection unchecked
             return (T) new StudentViewModel(application,studentId,repository);
         }
     }
 
+    /**
+     * Expose the LiveData StudentEntity query so the UI can observe it.
+     */
     public LiveData<StudentEntity> getStudent(){return observableStudent;}
 
     public void createStudent(StudentEntity student, OnAsyncEventListener callback){

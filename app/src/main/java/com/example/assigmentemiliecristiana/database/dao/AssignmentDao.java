@@ -12,6 +12,9 @@ import com.example.assigmentemiliecristiana.database.entity.AssignmentEntity;
 
 import java.util.List;
 
+/**
+ * https://developer.android.com/topic/libraries/architecture/room.html#no-object-references
+ */
 @Dao
 public abstract class AssignmentDao {
     @Query("SELECT * FROM assignments WHERE id = :id")

@@ -1,7 +1,8 @@
-package com.example.assigmentemiliecristiana.UI;
+package com.example.assigmentemiliecristiana.UI.Assignment;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -25,6 +26,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.assigmentemiliecristiana.R;
+import com.example.assigmentemiliecristiana.UI.Home;
+import com.example.assigmentemiliecristiana.UI.Profile.MyProfile;
 import com.example.assigmentemiliecristiana.database.entity.AssignmentEntity;
 import com.example.assigmentemiliecristiana.util.OnAsyncEventListener;
 import com.example.assigmentemiliecristiana.viewmodel.assignment.AssignmentViewModel;
@@ -32,18 +35,17 @@ import com.example.assigmentemiliecristiana.viewmodel.assignment.AssignmentViewM
 import java.util.Calendar;
 import java.util.Date;
 
+//this activity is for see the detail of an assignment
 public class AssignmentDescr extends AppCompatActivity {
     private static final String TAG = "AssignmentDetailActivity";
-
-    private static final int EDIT_ACCOUNT = 1;
 
     private AssignmentEntity assignment;
     private EditText descr;
     private EditText course;
     private EditText note;
     private TextView displayDate;
-    private Spinner spinner;
-    private Spinner spinner_type;
+    private Spinner spinnerStatus;
+    private Spinner spinnerType;
     private Button delete;
     private Button save;
     private ImageButton date;
@@ -58,6 +60,7 @@ public class AssignmentDescr extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //link this activity with the layout
         setContentView(R.layout.assignment_details);
 
         //use ActionBar utility methods
@@ -68,8 +71,14 @@ public class AssignmentDescr extends AppCompatActivity {
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
+        //get the username of the user
+        SharedPreferences settings = getSharedPreferences(Home.PREFS_NAME, 0);
+        user = settings.getString(Home.PREFS_USER, null);
+
+        //get the assignmentId of the assignment clicked
         assignmentId = getIntent().getLongExtra("assignmentId",0L);
 
+        //link the variables in this activity with that in the layout
         descr = findViewById(R.id.description);
         course = findViewById(R.id.course);
         note = findViewById(R.id.note);
@@ -78,43 +87,54 @@ public class AssignmentDescr extends AppCompatActivity {
         date = findViewById(R.id.date_assignment);
         displayDate = findViewById(R.id.date_input);
 
-        spinner = (Spinner) findViewById(R.id.status);
+        //set the status spinner
+        spinnerStatus = findViewById(R.id.status);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.status_list, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
+        spinnerStatus.setAdapter(adapter);
 
-        spinner_type = (Spinner) findViewById(R.id.type);
+        //set the type spinner
+        spinnerType = findViewById(R.id.type);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
                 R.array.type_list, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_type.setAdapter(adapter2);
+        spinnerType.setAdapter(adapter2);
 
+        //go research the assignments clicked
         AssignmentViewModel.Factory factory = new AssignmentViewModel.Factory(
                 getApplication(),assignmentId);
         viewModel = new ViewModelProvider(this,factory).get(AssignmentViewModel.class);
         viewModel.getAssignment().observe(this,assignmentEntity -> {
             if (assignmentEntity!= null){
                 assignment = assignmentEntity;
+                //It is a external method which is below
                 updateContent();
             }
         });
 
+        //set what to do when you click on the delete button
+        //the deleteAssignment method is a external method which is below
         delete.setOnClickListener(view -> deleteAssignment());
 
+        //set what to do when you click on the save button
+        //the saveChange method is a external method which is below
         save.setOnClickListener(view -> saveChange());
 
+        //set a calendar
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
+        //set what to do when you click on the calendar button
         date.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 {
+                    //will show you a DatePickerDialog which you need to choose a date
                     DatePickerDialog datePickerDialog = new DatePickerDialog(
                             AssignmentDescr.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener, year, month, day);
                     datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -123,31 +143,41 @@ public class AssignmentDescr extends AppCompatActivity {
                 }
             }
         });
+        //set what to do when you choose a date
         setListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                //put more 1 to the month to have the date chosen
                 month = month + 1;
+                //put he date in a String and a Long
                 dateL = new Date(year,month,day).getTime();
                 String dateS = day + "/" + month + "/" + year;
 
+                //to display the date
                 displayDate.setText(dateS);
                 }
         };
     }
+    //It will put the data to EditTexts
     private void updateContent(){
+        //see if the assignment is not null
         if (assignment !=null){
+            //put the data to EditTexts
             descr.setText(assignment.getName());
             course.setText(assignment.getCourse());
             note.setText(assignment.getDescription());
 
-            ArrayAdapter arrayAdapter = (ArrayAdapter) spinner.getAdapter();
-            int idStatut = arrayAdapter.getPosition(assignment.getStatus());
-            spinner.setSelection(idStatut);
+            //put the good status to the status spinner
+            ArrayAdapter arrayAdapter = (ArrayAdapter) spinnerStatus.getAdapter();
+            int idStatus = arrayAdapter.getPosition(assignment.getStatus());
+            spinnerStatus.setSelection(idStatus);
 
-            ArrayAdapter arrayAdapter2 = (ArrayAdapter) spinner_type.getAdapter();
+            //put the good type to the type spinner
+            ArrayAdapter arrayAdapter2 = (ArrayAdapter) spinnerType.getAdapter();
             int idType = arrayAdapter2.getPosition(assignment.getType());
-            spinner_type.setSelection(idType);
+            spinnerType.setSelection(idType);
 
+            //pick the date, change it to String and put to the date ViewText
             dateL= assignment.getDate();
             Date date = new Date();
             date.setTime(assignment.getDate());
@@ -165,20 +195,24 @@ public class AssignmentDescr extends AppCompatActivity {
         }
     }
 
+    //to save the change of the assignment
     private void saveChange(){
-       String name = descr.getText().toString();
-       String courseA = course.getText().toString();
-       String description = note.getText().toString();
-       String status = spinner.getSelectedItem().toString();
-       String type = spinner_type.getSelectedItem().toString();
+        //pick the new assignment
+        String name = descr.getText().toString();
+        String courseA = course.getText().toString();
+        String description = note.getText().toString();
+        String status = spinnerStatus.getSelectedItem().toString();
+        String type = spinnerType.getSelectedItem().toString();
 
-       assignment.setName(name);
-       assignment.setCourse(courseA);
-       assignment.setDescription(description);
-       assignment.setStatus(status);
-       assignment.setType(type);
-       assignment.setDate(dateL);
+        //put it to the current assignment
+        assignment.setName(name);
+        assignment.setCourse(courseA);
+        assignment.setDescription(description);
+        assignment.setStatus(status);
+        assignment.setType(type);
+        assignment.setDate(dateL);
 
+        //update the database
         AssignmentViewModel.Factory factory = new AssignmentViewModel.Factory(
                 getApplication(),assignmentId);
         viewModel = new ViewModelProvider(this,factory).get(AssignmentViewModel.class);
@@ -199,16 +233,20 @@ public class AssignmentDescr extends AppCompatActivity {
     }
     private void setResponse(Boolean response){
         if(response){
-            Toast toast = Toast.makeText(this,"Assignment modify",Toast.LENGTH_LONG);
+            //display a little message to say that the assignment is modified
+            Toast toast = Toast.makeText(this,"Assignment modified",Toast.LENGTH_LONG);
             toast.show();
+            //go to Home
             startActivity(new Intent(AssignmentDescr.this, Home.class));
         }
         else{
+            //display a little message to say that the assignment isn't modified
             Toast toast = Toast.makeText(this,"Fail",Toast.LENGTH_LONG);
             toast.show();
         }
     }
 
+    //delete the assignment from the database
     private void deleteAssignment(){
         AssignmentViewModel.Factory factory = new AssignmentViewModel.Factory(getApplication(),assignmentId);
         viewModel = new ViewModelProvider(this,factory).get(AssignmentViewModel.class);
@@ -228,11 +266,14 @@ public class AssignmentDescr extends AppCompatActivity {
     }
     private void setResponseD(Boolean response){
         if(response){
+            //display a little message to say that the assignment is deleted
             Toast toast = Toast.makeText(this,"Assignment deleted",Toast.LENGTH_LONG);
             toast.show();
+            //go to Home
             startActivity(new Intent(AssignmentDescr.this, Home.class));
         }
         else{
+            //display a little message to say that the assignment isn't deleted
             Toast toast = Toast.makeText(this,"Fail",Toast.LENGTH_LONG);
             toast.show();
         }
