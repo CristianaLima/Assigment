@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,6 +18,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -42,6 +47,7 @@ public class AssignmentDescr extends AppCompatActivity {
     private Button delete;
     private Button save;
     private ImageButton date;
+    private String user;
 
     private Long dateL;
     private Long assignmentId;
@@ -53,6 +59,14 @@ public class AssignmentDescr extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.assignment_details);
+
+        //use ActionBar utility methods
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("AssignmentApp");
+
+        // methods to display the icon in the ActionBar
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
 
         assignmentId = getIntent().getLongExtra("assignmentId",0L);
 
@@ -222,6 +236,38 @@ public class AssignmentDescr extends AppCompatActivity {
             Toast toast = Toast.makeText(this,"Fail",Toast.LENGTH_LONG);
             toast.show();
         }
+    }
+
+    // method to inflate the options menu when
+    // the user opens the menu for the first time
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    // methods to control the operations that will
+    // happen when user clicks on the action buttons
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.profile_taskbar:
+                Intent intent = new Intent(AssignmentDescr.this, MyProfile.class);
+                intent.putExtra("username", user);
+                startActivity(intent);
+                break;
+
+            case R.id.about_taskbar:
+                final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+                alertDialog.setTitle("About");
+                alertDialog.setCancelable(false);
+                alertDialog.setMessage("This project has been done to understand how Android Studio work and to implement the different architectures patterns that we have learned.");
+                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,"Ok",(dialog, which)->alertDialog.dismiss());
+                alertDialog.show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
