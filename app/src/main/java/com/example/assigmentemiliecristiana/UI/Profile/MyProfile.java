@@ -98,7 +98,9 @@ public class MyProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //go to LoginPage
-                startActivity(new Intent(MyProfile.this, LoginPage.class));
+                Intent intent = new Intent(MyProfile.this, LoginPage.class);
+                finish();
+                startActivity(intent);
             }
         });
 
@@ -142,7 +144,9 @@ public class MyProfile extends AppCompatActivity {
             Toast toast = Toast.makeText(this,"Profile deleted",Toast.LENGTH_LONG);
             toast.show();
             //go to LoginPage
-            startActivity(new Intent(MyProfile.this, LoginPage.class));
+            Intent intent = new Intent(MyProfile.this, LoginPage.class);
+            finish();
+            startActivity(intent);
         }
         else{
             //display a little message to say that the profile isn't deleted
