@@ -63,7 +63,7 @@ public class Register extends AppCompatActivity {
      */
     private void saveChange(String username, String email, String pwd, String pwdConf){
         //see if the password is not equals to the confirm password and if it is not more that 4 characters
-        if(!pwd.equals(pwdConf)||pwd.length()<4){
+        if(!pwd.equals(pwdConf)||pwd.length()<6){
             password.setError("Password is invalid");
             password.requestFocus();
             password.setText("");
@@ -109,8 +109,8 @@ public class Register extends AppCompatActivity {
         }
         else{
             //display a little error message to say that the username is already use
-            username.setError("Username already used");
-            username.requestFocus();
+            email_input.setError("email already used");
+            email_input.requestFocus();
         }
     }
 

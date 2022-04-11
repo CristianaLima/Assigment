@@ -119,6 +119,6 @@ public class LoginPage extends AppCompatActivity {
 
 
     private boolean isPasswordValid(String password) {
-        return password.length() > 4;
+        return password.length() > 5;
     }
 }

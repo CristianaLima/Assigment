@@ -17,7 +17,6 @@ import com.example.assigmentemiliecristiana.util.OnAsyncEventListener;
 public class StudentViewModel extends AndroidViewModel {
 
     private StudentRepository repository;
-    private Application application;
     // MediatorLiveData can observe other LiveData objects and react on their emissions.
     private final MediatorLiveData<StudentEntity> observableStudent;
 
@@ -25,7 +24,6 @@ public class StudentViewModel extends AndroidViewModel {
                             final String studentId, StudentRepository studentRepository) {
         super(application);
         repository = studentRepository;
-        this.application = application;
 
         observableStudent = new MediatorLiveData<>();
         // set by default null, until we get data from the database.
@@ -66,15 +64,15 @@ public class StudentViewModel extends AndroidViewModel {
     public LiveData<StudentEntity> getStudent(){return observableStudent;}
 
     public void createStudent(StudentEntity student, OnAsyncEventListener callback){
-        repository.insert(student,callback);
+        ((BaseApp) getApplication()).getStudentRepository().insert(student, callback);
     }
 
     public void updateStudent(StudentEntity student, OnAsyncEventListener callback){
-        repository.update(student,callback);
+        ((BaseApp) getApplication()).getStudentRepository().update(student, callback);
     }
 
     public void deleteStudent(StudentEntity student, OnAsyncEventListener callback){
-        repository.delete(student,callback);
+        ((BaseApp) getApplication()).getStudentRepository().delete(student, callback);
     }
 
 }

@@ -36,8 +36,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
     // Firebase Dependencies
-    def firebase_version = "19.4.0"
-    implementation "com.google.firebase:firebase-auth:$firebase_version"
+    def firebase_version = "19.6.0"
+    implementation "com.google.firebase:firebase-auth:21.0.3"
     implementation "com.google.firebase:firebase-database:$firebase_version"
 
 

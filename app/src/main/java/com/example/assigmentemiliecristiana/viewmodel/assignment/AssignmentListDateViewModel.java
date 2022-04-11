@@ -16,7 +16,6 @@ import com.example.assigmentemiliecristiana.database.repository.AssignmentReposi
 import java.util.List;
 
 public class AssignmentListDateViewModel extends AndroidViewModel {
-    private Application application;
     private AssignmentRepository repository;
     // MediatorLiveData can observe other LiveData objects and react on their emissions.
     private final MediatorLiveData<List<AssignmentEntity>> observableDateAssignments;
@@ -25,7 +24,6 @@ public class AssignmentListDateViewModel extends AndroidViewModel {
                                    final String ownerId, Long date,
                                    AssignmentRepository assignmentRepository){
         super(application);
-        this.application = application;
         repository= assignmentRepository;
 
         observableDateAssignments = new MediatorLiveData<>();

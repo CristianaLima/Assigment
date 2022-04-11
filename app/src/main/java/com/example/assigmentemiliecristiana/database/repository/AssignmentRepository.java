@@ -24,9 +24,6 @@ public class AssignmentRepository {
 
     private static AssignmentRepository instance;
 
-    private AssignmentRepository() {
-    }
-
     public static AssignmentRepository getInstance(){
         if (instance==null){
             synchronized (AssignmentRepository.class){
@@ -66,12 +63,12 @@ public class AssignmentRepository {
     public void insert(final AssignmentEntity assignment, final OnAsyncEventListener callback){
         DatabaseReference reference = FirebaseDatabase.getInstance()
                 .getReference("students")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child(assignment.getOwner())
                 .child("assignments");
         String key = reference.push().getKey();
         FirebaseDatabase.getInstance()
                 .getReference("students")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child(assignment.getOwner())
                 .child("assignments")
                 .child(key)
                 .setValue(assignment,(databaseError, databaseReference) -> {

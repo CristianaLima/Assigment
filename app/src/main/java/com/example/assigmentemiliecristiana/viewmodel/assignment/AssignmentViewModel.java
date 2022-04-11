@@ -17,7 +17,7 @@ import com.example.assigmentemiliecristiana.util.OnAsyncEventListener;
 import java.util.List;
 
 public class AssignmentViewModel extends AndroidViewModel {
-    private Application application;
+    private static final String TAG = "AccountListViewModel";
     private AssignmentRepository repository;
     // MediatorLiveData can observe other LiveData objects and react on their emissions.
     private final MediatorLiveData<AssignmentEntity> observableAssigment;
@@ -27,7 +27,6 @@ public class AssignmentViewModel extends AndroidViewModel {
                                AssignmentRepository assignmentRepository){
         super(application);
 
-        this.application= application;
         repository = assignmentRepository;
 
         observableAssigment = new MediatorLiveData<>();
@@ -67,14 +66,14 @@ public class AssignmentViewModel extends AndroidViewModel {
     public LiveData<AssignmentEntity> getAssignment(){return observableAssigment;}
 
     public void createAssignment(AssignmentEntity assignment, OnAsyncEventListener callback){
-        repository.insert(assignment,callback);
+        ((BaseApp) getApplication()).getAssignmentRepository().insert(assignment, callback);
     }
 
     public void updateAssignment(AssignmentEntity assignment, OnAsyncEventListener callback){
-        repository.update(assignment,callback);
+        ((BaseApp) getApplication()).getAssignmentRepository().update(assignment, callback);
     }
 
     public void deleteAssignment(AssignmentEntity assignment, OnAsyncEventListener callback){
-        repository.delete(assignment,callback);
+        ((BaseApp) getApplication()).getAssignmentRepository().delete(assignment, callback);
     }
 }
