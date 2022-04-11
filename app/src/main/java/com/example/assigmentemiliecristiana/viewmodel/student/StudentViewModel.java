@@ -31,7 +31,7 @@ public class StudentViewModel extends AndroidViewModel {
         // set by default null, until we get data from the database.
         observableStudent.setValue(null);
 
-        LiveData<StudentEntity> student = repository.getStudent(studentId,application);
+        LiveData<StudentEntity> student = repository.getStudent(studentId);
 
         // observe the changes of the student entity from the database and forward them
         observableStudent.addSource(student,observableStudent::setValue);
@@ -66,15 +66,15 @@ public class StudentViewModel extends AndroidViewModel {
     public LiveData<StudentEntity> getStudent(){return observableStudent;}
 
     public void createStudent(StudentEntity student, OnAsyncEventListener callback){
-        repository.insert(student,callback,application);
+        repository.insert(student,callback);
     }
 
     public void updateStudent(StudentEntity student, OnAsyncEventListener callback){
-        repository.update(student,callback,application);
+        repository.update(student,callback);
     }
 
     public void deleteStudent(StudentEntity student, OnAsyncEventListener callback){
-        repository.delete(student,callback,application);
+        repository.delete(student,callback);
     }
 
 }

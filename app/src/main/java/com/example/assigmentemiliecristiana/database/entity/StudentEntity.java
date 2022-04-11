@@ -1,48 +1,41 @@
 package com.example.assigmentemiliecristiana.database.entity;
 
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.annotation.NonNull;
+import com.google.firebase.database.Exclude;
 
-import java.util.Objects;
+import java.util.HashMap;
+import java.util.Map;
 
-/**
- * https://developer.android.com/reference/android/arch/persistence/room/Entity.html
- *
- * Further information to Parcelable:
- * https://developer.android.com/reference/android/os/Parcelable
- * Why we use Parcelable over Serializable:
- * https://android.jlelse.eu/parcelable-vs-serializable-6a2556d51538
- */
-@Entity(tableName = "students", primaryKeys = {"username"})
 public class StudentEntity {
-
-    @NonNull
+    private String id;
     private String username;
-
-    @ColumnInfo(name = "email")
     private String email;
-
     private String password;
 
-    @Ignore
     public StudentEntity() {
     }
 
-    public StudentEntity(@NonNull String username, String email, String password) {
+    public StudentEntity( String username,@NonNull String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
     }
 
-    @NonNull
+    @Exclude
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(@NonNull String username) {
+    public void setUsername( String username) {
         this.username = username;
     }
 
@@ -50,10 +43,11 @@ public class StudentEntity {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(@NonNull String email) {
         this.email = email;
     }
 
+    @Exclude
     public String getPassword() {
         return password;
     }
@@ -73,13 +67,19 @@ public class StudentEntity {
 
     @Override
     public String toString() {
-        return
-                "username='" + username + '\'' +
-                ", email='" + email + '\'';
+        return "username='" + username + ", email='" + email;
     }
 
     public int compareTo(@NonNull Object o) {
         return toString().compareTo(o.toString());
     }
 
+    @Exclude
+    public Map<String, Object> toMap(){
+        HashMap<String,Object> result = new HashMap<>();
+        result.put("username", username);
+        result.put("email", email);
+
+        return result;
+    }
 }

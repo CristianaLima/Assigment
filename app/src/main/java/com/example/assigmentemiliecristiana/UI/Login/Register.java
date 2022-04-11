@@ -9,11 +9,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.ui.AppBarConfiguration;
 
+import com.example.assigmentemiliecristiana.BaseApp;
 import com.example.assigmentemiliecristiana.R;
-import com.example.assigmentemiliecristiana.database.async.student.CreateStudent;
 import com.example.assigmentemiliecristiana.database.entity.StudentEntity;
+import com.example.assigmentemiliecristiana.database.repository.StudentRepository;
 import com.example.assigmentemiliecristiana.util.OnAsyncEventListener;
 
 /**
@@ -22,6 +22,7 @@ import com.example.assigmentemiliecristiana.util.OnAsyncEventListener;
 public class Register extends AppCompatActivity {
 
     private static final String TAG = "RegisterActivity";
+    private StudentRepository repository;
 
     private TextView password;
     private TextView email_input;
@@ -33,6 +34,7 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //link this activity with the layout
         setContentView(R.layout.register);
+        repository = ((BaseApp) getApplication()).getStudentRepository();
 
         //link the variables in this activity with that in the layout
         username = findViewById(R.id.input_Username);
@@ -77,7 +79,7 @@ public class Register extends AppCompatActivity {
 
         //it will create a new student
         StudentEntity newStudent = new StudentEntity(username,email,pwd);
-        new CreateStudent(getApplication(), new OnAsyncEventListener() {
+        repository.register(newStudent, new OnAsyncEventListener() {
             @Override
             public void onSuccess() {
                 Log.d(TAG,"Create user with email succeed");
@@ -89,7 +91,7 @@ public class Register extends AppCompatActivity {
                 Log.d(TAG,"Create user with email failed", e);
                 setResponse(false);
             }
-        }).execute(newStudent);
+        });
     }
 
     /**

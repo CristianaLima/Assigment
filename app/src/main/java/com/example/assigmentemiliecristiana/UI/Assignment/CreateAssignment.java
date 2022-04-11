@@ -48,7 +48,7 @@ public class CreateAssignment extends AppCompatActivity {
     private EditText description;
     private Spinner type;
     private Spinner status;
-    private String username;
+    private String email;
     private DatePickerDialog.OnDateSetListener setListener;
 
     private AssignmentViewModel viewModel;
@@ -77,7 +77,7 @@ public class CreateAssignment extends AppCompatActivity {
         description = findViewById(R.id.description);
 
         //go research the username of the user
-        username = getIntent().getStringExtra("username");
+        email = getIntent().getStringExtra("email");
 
         //set the status spinner
         status = findViewById(R.id.status);
@@ -181,7 +181,7 @@ public class CreateAssignment extends AppCompatActivity {
         String nameN= name.getText().toString();
 
         //create a variable assignment
-        newAssignment = new AssignmentEntity(nameN,typeN,descr,dateL,statusN,username,cour);
+        newAssignment = new AssignmentEntity(nameN,typeN,descr,dateL,statusN, email,cour);
 
         //create in the data the assignment
         viewModel.createAssignment(newAssignment, new OnAsyncEventListener() {
@@ -235,7 +235,7 @@ public class CreateAssignment extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.profile_taskbar:
                 Intent intent = new Intent(CreateAssignment.this, MyProfile.class);
-                intent.putExtra("username", username);
+                intent.putExtra("email", email);
                 startActivity(intent);
                 break;
 

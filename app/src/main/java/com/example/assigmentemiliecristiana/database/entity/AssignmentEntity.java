@@ -4,38 +4,17 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 import java.io.Serializable;
 
-/**
- * https://developer.android.com/reference/android/arch/persistence/room/Entity.html
- *
- * interesting: owner column references a foreign key, that's why this column is indexed.
- * If not indexed, it might trigger full table scans whenever parent table is modified so you are
- * highly advised to create an index that covers this column.
- *
- * Further information to Parcelable:
- * https://developer.android.com/reference/android/os/Parcelable
- * Why we use Parcelable over Serializable:
- * https://android.jlelse.eu/parcelable-vs-serializable-6a2556d51538
- */
-@Entity(tableName = "assignments",
-        foreignKeys =
-        @ForeignKey(
-                entity = StudentEntity.class,
-                parentColumns = "username",
-                childColumns = "owner",
-                onDelete = ForeignKey.CASCADE
-        ),
-        indices = {
-                @Index(
-                        value = {"owner"}
-                )}
-)
-public class AssignmentEntity implements Serializable {
 
-    @PrimaryKey(autoGenerate = true)
-    private Long id;
+public class AssignmentEntity implements Serializable {
+    private String id;
     private String name;
     private String type;
     private String course;
@@ -65,11 +44,12 @@ public class AssignmentEntity implements Serializable {
         this.course = course;
     }
 
-    public Long getId() {
+    @Exclude
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -89,6 +69,7 @@ public class AssignmentEntity implements Serializable {
         this.date = date;
     }
 
+    @Exclude
     public String getOwner() {
         return owner;
     }
@@ -135,5 +116,16 @@ public class AssignmentEntity implements Serializable {
         return name;
     }
 
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("name", name);
+        result.put("type", type);
+        result.put("status", status);
+        result.put("date", date);
+        result.put("description", description);
+        result.put("course", course);
 
+        return result;
+    }
 }

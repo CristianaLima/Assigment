@@ -34,7 +34,7 @@ public class AssignmentListViewModel extends AndroidViewModel {
         // set by default null, until we get data from the database.
         observableOwnAssignments.setValue(null);
 
-        LiveData<List<AssignmentEntity>> ownAssignments = repository.getByOwner(ownerId,application);
+        LiveData<List<AssignmentEntity>> ownAssignments = repository.getByOwner(ownerId);
         // observe the changes of the assignment entity from the database and forward them
         observableOwnAssignments.addSource(ownAssignments,observableOwnAssignments::setValue);
     }

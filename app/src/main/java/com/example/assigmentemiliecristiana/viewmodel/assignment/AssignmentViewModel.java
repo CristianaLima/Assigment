@@ -23,7 +23,7 @@ public class AssignmentViewModel extends AndroidViewModel {
     private final MediatorLiveData<AssignmentEntity> observableAssigment;
 
     public AssignmentViewModel(@NonNull Application application,
-                               final Long ownerId,
+                               final String ownerId,
                                AssignmentRepository assignmentRepository){
         super(application);
 
@@ -34,7 +34,7 @@ public class AssignmentViewModel extends AndroidViewModel {
         // set by default null, until we get data from the database.
         observableAssigment.setValue(null);
 
-        LiveData<AssignmentEntity> assignment = repository.getAssignment(ownerId,application);
+        LiveData<AssignmentEntity> assignment = repository.getAssignment(ownerId);
         // observe the changes of the assignment entity from the database and forward them
         observableAssigment.addSource(assignment,observableAssigment::setValue);
     }
@@ -45,10 +45,10 @@ public class AssignmentViewModel extends AndroidViewModel {
     public static class Factory extends ViewModelProvider.NewInstanceFactory{
         @NonNull
         private final Application application;
-        private final Long assignmentId;
+        private final String assignmentId;
         private final AssignmentRepository repository;
 
-        public Factory(@NonNull Application application, Long assignmentId) {
+        public Factory(@NonNull Application application, String assignmentId) {
             this.application = application;
             this.assignmentId = assignmentId;
             repository= ((BaseApp) application).getAssignmentRepository();
@@ -67,14 +67,14 @@ public class AssignmentViewModel extends AndroidViewModel {
     public LiveData<AssignmentEntity> getAssignment(){return observableAssigment;}
 
     public void createAssignment(AssignmentEntity assignment, OnAsyncEventListener callback){
-        repository.insert(assignment,callback,application);
+        repository.insert(assignment,callback);
     }
 
     public void updateAssignment(AssignmentEntity assignment, OnAsyncEventListener callback){
-        repository.update(assignment,callback,application);
+        repository.update(assignment,callback);
     }
 
     public void deleteAssignment(AssignmentEntity assignment, OnAsyncEventListener callback){
-        repository.delete(assignment,callback,application);
+        repository.delete(assignment,callback);
     }
 }

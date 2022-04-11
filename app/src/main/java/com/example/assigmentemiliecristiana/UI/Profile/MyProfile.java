@@ -29,7 +29,7 @@ import com.example.assigmentemiliecristiana.viewmodel.student.StudentViewModel;
 public class MyProfile extends AppCompatActivity {
     private static final String TAG = "ProfileActivity";
     private AppBarConfiguration appBarConfiguration;
-    private String username;
+    private String email;
 
     private TextView usernameDisplay;
     private TextView emailDisplay;
@@ -57,7 +57,7 @@ public class MyProfile extends AppCompatActivity {
         actionBar.setDisplayShowHomeEnabled(true);
 
         //go research the username of the user
-        username = getIntent().getStringExtra("username");
+        email = getIntent().getStringExtra("email");
 
         //link the variables in this activity with that in the layout
         usernameDisplay = findViewById(R.id.input_Username);
@@ -73,13 +73,13 @@ public class MyProfile extends AppCompatActivity {
             public void onClick(View view) {
                 //go to ModifyProfile with the username of the user
                 Intent intent = new Intent(MyProfile.this, ModifiyProfile.class);
-                intent.putExtra("username", username);
+                intent.putExtra("email", email);
                 startActivity(intent);
             }
         });
 
         //go research the student information from the database
-        StudentViewModel.Factory factory = new StudentViewModel.Factory(getApplication(),username);
+        StudentViewModel.Factory factory = new StudentViewModel.Factory(getApplication(), email);
         viewModel = new ViewModelProvider(this,factory).get(StudentViewModel.class);
         viewModel.getStudent().observe(this, studentEntity -> {
             if (studentEntity!=null){
@@ -175,7 +175,7 @@ public class MyProfile extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.profile_taskbar:
                 Intent intent = new Intent(MyProfile.this, MyProfile.class);
-                intent.putExtra("username", username);
+                intent.putExtra("username", email);
                 startActivity(intent);
                 break;
 

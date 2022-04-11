@@ -32,7 +32,7 @@ public class AssignmentListDateViewModel extends AndroidViewModel {
         // set by default null, until we get data from the database.
         observableDateAssignments.setValue(null);
 
-        LiveData<List<AssignmentEntity>> dateAssignments = repository.getByDate(ownerId,date,application);
+        LiveData<List<AssignmentEntity>> dateAssignments = repository.getByDate(ownerId,date);
         // observe the changes of the assignment entity from the database and forward them
         observableDateAssignments.addSource(dateAssignments, observableDateAssignments::setValue);
 

@@ -52,7 +52,7 @@ public class Home extends AppCompatActivity {
     private AssignmentListViewModel viewModel;
     private AssignmentListDateViewModel dateViewModel;
     private RecyclerView recyclerView;
-    private String user;
+    private String email;
 
     private Button showAll;
     private TextView date_view;
@@ -91,7 +91,7 @@ public class Home extends AppCompatActivity {
 
         //get the username of the user
         SharedPreferences settings = getSharedPreferences(Home.PREFS_NAME, 0);
-        user = settings.getString(Home.PREFS_USER, null);
+        email = settings.getString(Home.PREFS_USER, null);
 
         //link the buttons in this activity with that in the layout
         ImageButton calendar_button =  findViewById(R.id.date_button);
@@ -132,7 +132,7 @@ public class Home extends AppCompatActivity {
             public void onClick(View view) {
                 //go to CreateAssignment with the username of the user
                 Intent intent = new Intent(Home.this, CreateAssignment.class);
-                intent.putExtra("username", user);
+                intent.putExtra("email", email);
                 startActivity(intent);
             }
         });
@@ -168,7 +168,7 @@ public class Home extends AppCompatActivity {
                 homepage_date.setText(dateS);
 
                 //go research all the assignments with the date chosen
-                AssignmentListDateViewModel.Factory factory = new AssignmentListDateViewModel.Factory(getApplication(), user, date);
+                AssignmentListDateViewModel.Factory factory = new AssignmentListDateViewModel.Factory(getApplication(), email, date);
                 dateViewModel = new ViewModelProvider(Home.this, factory).get(AssignmentListDateViewModel.class);
 
                 dateViewModel.getDateAssignments().observe(Home.this, assignmentEntities -> {
@@ -190,7 +190,7 @@ public class Home extends AppCompatActivity {
      */
     private void getInitialData() {
         //go research all the assignments of the user
-        AssignmentListViewModel.Factory factory = new AssignmentListViewModel.Factory(getApplication(), user);
+        AssignmentListViewModel.Factory factory = new AssignmentListViewModel.Factory(getApplication(), email);
         viewModel = new ViewModelProvider(this, factory).get(AssignmentListViewModel.class);
 
         viewModel.getOwnAssignments().observe(this, assignmentEntities -> {
@@ -228,7 +228,7 @@ public class Home extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.profile_taskbar:
                 Intent intent = new Intent(Home.this, MyProfile.class);
-                intent.putExtra("username", user);
+                intent.putExtra("email", email);
                 startActivity(intent);
                 break;
 

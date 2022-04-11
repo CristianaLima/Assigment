@@ -9,15 +9,6 @@ import com.example.assigmentemiliecristiana.database.repository.StudentRepositor
  */
 public class BaseApp extends Application {
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-    }
-
-    public AppDatabase getDatabase() {
-        return AppDatabase.getInstance(this);
-    }
-
     public AssignmentRepository getAssignmentRepository() {
         return AssignmentRepository.getInstance();
     }

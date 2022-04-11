@@ -49,10 +49,10 @@ public class AssignmentDescr extends AppCompatActivity {
     private Button delete;
     private Button save;
     private ImageButton date;
-    private String user;
+    private String email;
 
     private Long dateL;
-    private Long assignmentId;
+    private String assignmentId;
 
     private AssignmentViewModel viewModel;
     DatePickerDialog.OnDateSetListener setListener;
@@ -73,10 +73,10 @@ public class AssignmentDescr extends AppCompatActivity {
 
         //get the username of the user
         SharedPreferences settings = getSharedPreferences(Home.PREFS_NAME, 0);
-        user = settings.getString(Home.PREFS_USER, null);
+        email = settings.getString(Home.PREFS_USER, null);
 
         //get the assignmentId of the assignment clicked
-        assignmentId = getIntent().getLongExtra("assignmentId",0L);
+        assignmentId = getIntent().getStringExtra("assignmentId");
 
         //link the variables in this activity with that in the layout
         descr = findViewById(R.id.description);
@@ -295,7 +295,7 @@ public class AssignmentDescr extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.profile_taskbar:
                 Intent intent = new Intent(AssignmentDescr.this, MyProfile.class);
-                intent.putExtra("username", user);
+                intent.putExtra("email", email);
                 startActivity(intent);
                 break;
 

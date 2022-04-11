@@ -18,7 +18,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.ui.AppBarConfiguration;
 
 import com.example.assigmentemiliecristiana.R;
-import com.example.assigmentemiliecristiana.database.async.student.CreateStudent;
 import com.example.assigmentemiliecristiana.database.entity.StudentEntity;
 import com.example.assigmentemiliecristiana.util.OnAsyncEventListener;
 import com.example.assigmentemiliecristiana.viewmodel.student.StudentViewModel;
@@ -35,7 +34,7 @@ public class ModifiyProfile extends AppCompatActivity {
     private EditText pwdDisplay;
     private EditText pwdConfDisplay;
     private Button apply;
-    private String username;
+    private String email;
 
     private StudentViewModel viewModel;
     private StudentEntity student;
@@ -46,7 +45,7 @@ public class ModifiyProfile extends AppCompatActivity {
         //link this activity with the layout
         setContentView(R.layout.modify_profile);
         //go research the username of the user
-        username = getIntent().getStringExtra("username");
+        email = getIntent().getStringExtra("email");
 
         //use ActionBar utility methods
         ActionBar actionBar = getSupportActionBar();
@@ -64,7 +63,7 @@ public class ModifiyProfile extends AppCompatActivity {
         apply = findViewById(R.id.apply_btn);
 
         //go research the student information from the database
-        StudentViewModel.Factory factory = new StudentViewModel.Factory(getApplication(),username);
+        StudentViewModel.Factory factory = new StudentViewModel.Factory(getApplication(), email);
         viewModel = new ViewModelProvider(this,factory).get(StudentViewModel.class);
         viewModel.getStudent().observe(this, studentEntity -> {
             if (studentEntity!= null){
@@ -116,45 +115,10 @@ public class ModifiyProfile extends AppCompatActivity {
             return;
         }
 
-        //see if the username is same as before the changes
-        if (!username.equals(student.getUsername())){
-            //delete the current student
-            viewModel.deleteStudent(student, new OnAsyncEventListener() {
-                @Override
-                public void onSuccess() {
-                    Log.d(TAG,"Delete user profile succeed");
-                }
-
-                @Override
-                public void onFailure(Exception e) {
-                    Log.d(TAG,"Delete user profile failed", e);
-                }
-            });
-
-            //create a new one
-            StudentEntity newStudent = new StudentEntity(username,email,pwd);
-            new CreateStudent(getApplication(), new OnAsyncEventListener() {
-                @Override
-                public void onSuccess() {
-                    Log.d(TAG,"Change user profile succeed");
-                    setResponse(true);
-                }
-
-                @Override
-                public void onFailure(Exception e) {
-                    Log.d(TAG,"Change user profile failed", e);
-                    setResponse(false);
-                }
-            }).execute(newStudent);
-
-            student.setUsername(username);
-            this.username = username;
-
-        }
-
         //set the new data
         student.setEmail(email);
         student.setPassword(pwd);
+        student.setUsername(username);
 
         //update the student
         viewModel.updateStudent(student, new OnAsyncEventListener() {
@@ -185,12 +149,12 @@ public class ModifiyProfile extends AppCompatActivity {
 
             //go to MyProfile with the username of the user
             Intent intent = new Intent(ModifiyProfile.this, MyProfile.class);
-            intent.putExtra("username", username);
+            intent.putExtra("email", email);
             startActivity(intent);
         }
         else{
-            usernameDisplay.setError("Username already used");
-            usernameDisplay.requestFocus();
+            mailDisplay.setError("Email already used");
+            mailDisplay.requestFocus();
         }
     }
 
@@ -214,7 +178,7 @@ public class ModifiyProfile extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.profile_taskbar:
                 Intent intent = new Intent(ModifiyProfile.this, MyProfile.class);
-                intent.putExtra("username", username);
+                intent.putExtra("email", email);
                 startActivity(intent);
                 break;
 
