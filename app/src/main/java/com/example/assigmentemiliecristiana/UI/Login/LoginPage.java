@@ -12,8 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 
-import androidx.navigation.ui.AppBarConfiguration;
-
 
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,7 +20,6 @@ import android.widget.Toast;
 import com.example.assigmentemiliecristiana.BaseApp;
 import com.example.assigmentemiliecristiana.R;
 import com.example.assigmentemiliecristiana.UI.Home;
-import com.example.assigmentemiliecristiana.database.AppDatabase;
 import com.example.assigmentemiliecristiana.database.repository.StudentRepository;
 
 /**

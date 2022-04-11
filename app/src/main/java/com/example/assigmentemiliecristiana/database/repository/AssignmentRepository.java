@@ -3,10 +3,8 @@ package com.example.assigmentemiliecristiana.database.repository;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
-import androidx.room.Database;
 
 import com.example.assigmentemiliecristiana.BaseApp;
-import com.example.assigmentemiliecristiana.database.AppDatabase;
 import com.example.assigmentemiliecristiana.database.async.assignment.CreateAssignment;
 import com.example.assigmentemiliecristiana.database.async.assignment.DeleteAssignment;
 import com.example.assigmentemiliecristiana.database.async.assignment.UpdateAssignment;

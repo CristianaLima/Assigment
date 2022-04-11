@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "640609758206",
+    "project_id": "assigmentemiliecristiana",
+    "storage_bucket": "assigmentemiliecristiana.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640609758206:android:b871bacf1c00b5852daeaf",
+        "android_client_info": {
+          "package_name": "com.example.assigmentemiliecristiana"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "640609758206-3563ks665unnje6eckinfkgtsr2vp2eu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdhfkEpuOxRvRrpsjcWLo8s0uvjSfUWfo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "640609758206-3563ks665unnje6eckinfkgtsr2vp2eu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
