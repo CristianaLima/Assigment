@@ -36,7 +36,7 @@
         android:background="@drawable/custom_login"
         android:drawableStart="@drawable/username"
         android:drawablePadding="10dp"
-        android:hint="Username"
+        android:hint="Email"
         android:padding="20dp"
         android:textColor="@color/white"
         android:textColorHint="#090909"
