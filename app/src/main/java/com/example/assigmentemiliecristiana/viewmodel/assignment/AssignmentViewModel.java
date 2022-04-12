@@ -17,7 +17,6 @@ import com.example.assigmentemiliecristiana.util.OnAsyncEventListener;
 import java.util.List;
 
 public class AssignmentViewModel extends AndroidViewModel {
-    private static final String TAG = "AccountListViewModel";
     private AssignmentRepository repository;
     // MediatorLiveData can observe other LiveData objects and react on their emissions.
     private final MediatorLiveData<AssignmentEntity> observableAssigment;

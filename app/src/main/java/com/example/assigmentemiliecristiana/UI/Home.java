@@ -46,7 +46,7 @@ import java.util.List;
 public class Home extends AppCompatActivity {
 
     public static final String PREFS_NAME = "SharefPrefs";
-    public static final String PREFS_USER = "LoggedIn";
+    public static final String PREFS_EMAIL = "LoggedIn";
     private static final String TAG = "AssigmentActivity";
     private List<AssignmentEntity> assignments;
     private AssignmentListViewModel viewModel;
@@ -91,7 +91,11 @@ public class Home extends AppCompatActivity {
 
         //get the username of the user
         SharedPreferences settings = getSharedPreferences(Home.PREFS_NAME, 0);
-        email = settings.getString(Home.PREFS_USER, null);
+        email = settings.getString(Home.PREFS_EMAIL, null);
+        Intent intent = getIntent();
+        if (!email.equals(intent.getStringExtra("email"))){
+            email = intent.getStringExtra("email");
+        }
 
         //link the buttons in this activity with that in the layout
         ImageButton calendar_button =  findViewById(R.id.date_button);

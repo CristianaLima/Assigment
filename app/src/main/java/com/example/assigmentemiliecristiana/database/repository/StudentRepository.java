@@ -60,7 +60,7 @@ public class StudentRepository {
         FirebaseDatabase.getInstance()
                 .getReference("students")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .setValue(student, (databaseError, databaseReference) ->{
+                .setValue(student.toMap(), (databaseError, databaseReference) ->{
                     if (databaseError!= null){
                         callback.onFailure(databaseError.toException());
                         FirebaseAuth.getInstance().getCurrentUser().delete()

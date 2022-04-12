@@ -24,10 +24,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.assigmentemiliecristiana.BaseApp;
 import com.example.assigmentemiliecristiana.R;
 import com.example.assigmentemiliecristiana.UI.Home;
 import com.example.assigmentemiliecristiana.UI.Profile.MyProfile;
 import com.example.assigmentemiliecristiana.database.entity.AssignmentEntity;
+import com.example.assigmentemiliecristiana.database.repository.AssignmentRepository;
 import com.example.assigmentemiliecristiana.util.OnAsyncEventListener;
 import com.example.assigmentemiliecristiana.viewmodel.assignment.AssignmentViewModel;
 
@@ -51,7 +53,8 @@ public class CreateAssignment extends AppCompatActivity {
     private String email;
     private DatePickerDialog.OnDateSetListener setListener;
 
-    private AssignmentViewModel viewModel;
+//    private AssignmentViewModel viewModel;
+    private AssignmentRepository repository;
     private AssignmentEntity newAssignment = new AssignmentEntity();
     private Long dateL;
 
@@ -60,6 +63,7 @@ public class CreateAssignment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //link this activity with the layout
         setContentView(R.layout.create_assigment);
+        repository = ((BaseApp) getApplication()).getAssignmentRepository();
 
         //use ActionBar utility methods
         ActionBar actionBar = getSupportActionBar();
@@ -134,9 +138,9 @@ public class CreateAssignment extends AppCompatActivity {
             }
         };
         //set the ViewModel
-        AssignmentViewModel.Factory factory = new AssignmentViewModel.Factory(
-                getApplication(), newAssignment.getId());
-        viewModel = new ViewModelProvider(this,factory).get(AssignmentViewModel.class);
+//        AssignmentViewModel.Factory factory = new AssignmentViewModel.Factory(
+//                getApplication(), newAssignment.getId());
+//        viewModel = new ViewModelProvider(this,factory).get(AssignmentViewModel.class);
 
         //set what to do when you click on the create button
         //the createAssignment method is a external method which is below
@@ -184,7 +188,7 @@ public class CreateAssignment extends AppCompatActivity {
         newAssignment = new AssignmentEntity(nameN,typeN,descr,dateL,statusN, email,cour);
 
         //create in the data the assignment
-        viewModel.createAssignment(newAssignment, new OnAsyncEventListener() {
+        repository.insert(newAssignment,new OnAsyncEventListener() {
             @Override
             public void onSuccess() {
                 Log.d(TAG, "createAssignment: success");
@@ -197,6 +201,7 @@ public class CreateAssignment extends AppCompatActivity {
                 setResponse(false);
             }
         });
+
 
     }
 

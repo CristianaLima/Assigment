@@ -71,7 +71,7 @@ public class AssignmentRepository {
                 .child(assignment.getOwner())
                 .child("assignments")
                 .child(key)
-                .setValue(assignment,(databaseError, databaseReference) -> {
+                .setValue(assignment.toMap(),(databaseError, databaseReference) -> {
                     if (databaseError != null) {
                         callback.onFailure(databaseError.toException());
                     } else {

@@ -73,7 +73,7 @@ public class AssignmentDescr extends AppCompatActivity {
 
         //get the username of the user
         SharedPreferences settings = getSharedPreferences(Home.PREFS_NAME, 0);
-        email = settings.getString(Home.PREFS_USER, null);
+        email = settings.getString(Home.PREFS_EMAIL, null);
 
         //get the assignmentId of the assignment clicked
         assignmentId = getIntent().getStringExtra("assignmentId");
