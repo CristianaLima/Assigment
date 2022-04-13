@@ -96,7 +96,6 @@ public class LoginPage extends AppCompatActivity {
             if(task.isSuccessful()){
                     //go to Home
                     Intent intent = new Intent(LoginPage.this, Home.class);
-                    intent.putExtra("email",email_data);
                     startActivity(intent);
                     email.setText("");
                     password.setText("");

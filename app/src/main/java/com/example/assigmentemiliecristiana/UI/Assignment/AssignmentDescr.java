@@ -31,6 +31,7 @@ import com.example.assigmentemiliecristiana.UI.Profile.MyProfile;
 import com.example.assigmentemiliecristiana.database.entity.AssignmentEntity;
 import com.example.assigmentemiliecristiana.util.OnAsyncEventListener;
 import com.example.assigmentemiliecristiana.viewmodel.assignment.AssignmentViewModel;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -71,9 +72,7 @@ public class AssignmentDescr extends AppCompatActivity {
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
-        //get the username of the user
-        SharedPreferences settings = getSharedPreferences(Home.PREFS_NAME, 0);
-        email = settings.getString(Home.PREFS_EMAIL, null);
+        email = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         //get the assignmentId of the assignment clicked
         assignmentId = getIntent().getStringExtra("assignmentId");
@@ -295,7 +294,6 @@ public class AssignmentDescr extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.profile_taskbar:
                 Intent intent = new Intent(AssignmentDescr.this, MyProfile.class);
-                intent.putExtra("email", email);
                 startActivity(intent);
                 break;
 

@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
 import com.example.assigmentemiliecristiana.database.entity.AssignmentEntity;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -57,7 +58,7 @@ public class AssignmentListDataLiveData extends LiveData<List<AssignmentEntity>>
     private List<AssignmentEntity> toAssignmentListDate(DataSnapshot snapshot){
         List<AssignmentEntity> assignmentEntities = new ArrayList<>();
         for (DataSnapshot childSnapshot : snapshot.getChildren()){
-            if (childSnapshot.getKey().equals(owner) && childSnapshot.getValue(AssignmentEntity.class).getDate().equals(date)){
+            if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(owner) && childSnapshot.getValue(AssignmentEntity.class).getDate().equals(date)){
                 AssignmentEntity assignmentEntity = childSnapshot.getValue(AssignmentEntity.class);
                 assignmentEntity.setId(childSnapshot.getKey());
                 assignmentEntity.setOwner(owner);

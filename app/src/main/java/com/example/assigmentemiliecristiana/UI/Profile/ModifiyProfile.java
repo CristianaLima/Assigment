@@ -21,6 +21,7 @@ import com.example.assigmentemiliecristiana.R;
 import com.example.assigmentemiliecristiana.database.entity.StudentEntity;
 import com.example.assigmentemiliecristiana.util.OnAsyncEventListener;
 import com.example.assigmentemiliecristiana.viewmodel.student.StudentViewModel;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * this activity is for modify the profile of the user
@@ -45,7 +46,7 @@ public class ModifiyProfile extends AppCompatActivity {
         //link this activity with the layout
         setContentView(R.layout.modify_profile);
         //go research the username of the user
-        email = getIntent().getStringExtra("email");
+        email = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         //use ActionBar utility methods
         ActionBar actionBar = getSupportActionBar();
@@ -178,7 +179,6 @@ public class ModifiyProfile extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.profile_taskbar:
                 Intent intent = new Intent(ModifiyProfile.this, MyProfile.class);
-                intent.putExtra("email", email);
                 startActivity(intent);
                 break;
 

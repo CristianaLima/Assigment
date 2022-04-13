@@ -34,6 +34,7 @@ import com.example.assigmentemiliecristiana.util.RecyclerViewItemClickListener;
 import com.example.assigmentemiliecristiana.viewmodel.assignment.AssignmentListDateViewModel;
 import com.example.assigmentemiliecristiana.viewmodel.assignment.AssignmentListViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -90,12 +91,7 @@ public class Home extends AppCompatActivity {
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         //get the username of the user
-        SharedPreferences settings = getSharedPreferences(Home.PREFS_NAME, 0);
-        email = settings.getString(Home.PREFS_EMAIL, null);
-        Intent intent = getIntent();
-        if (!email.equals(intent.getStringExtra("email"))){
-            email = intent.getStringExtra("email");
-        }
+        email = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         //link the buttons in this activity with that in the layout
         ImageButton calendar_button =  findViewById(R.id.date_button);
@@ -136,7 +132,6 @@ public class Home extends AppCompatActivity {
             public void onClick(View view) {
                 //go to CreateAssignment with the username of the user
                 Intent intent = new Intent(Home.this, CreateAssignment.class);
-                intent.putExtra("email", email);
                 startActivity(intent);
             }
         });
@@ -232,7 +227,6 @@ public class Home extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.profile_taskbar:
                 Intent intent = new Intent(Home.this, MyProfile.class);
-                intent.putExtra("email", email);
                 startActivity(intent);
                 break;
 

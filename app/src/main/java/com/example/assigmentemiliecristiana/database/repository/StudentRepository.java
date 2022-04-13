@@ -108,6 +108,7 @@ public class StudentRepository {
                 callback.onSuccess();
             }
         });
+        FirebaseAuth.getInstance().getCurrentUser().delete();
     }
 
 }

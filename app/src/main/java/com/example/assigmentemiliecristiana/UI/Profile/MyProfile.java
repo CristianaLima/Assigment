@@ -22,6 +22,7 @@ import com.example.assigmentemiliecristiana.UI.Login.LoginPage;
 import com.example.assigmentemiliecristiana.database.entity.StudentEntity;
 import com.example.assigmentemiliecristiana.util.OnAsyncEventListener;
 import com.example.assigmentemiliecristiana.viewmodel.student.StudentViewModel;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * this activity show the profile of the user when you click on the person button
@@ -57,7 +58,7 @@ public class MyProfile extends AppCompatActivity {
         actionBar.setDisplayShowHomeEnabled(true);
 
         //go research the username of the user
-        email = getIntent().getStringExtra("email");
+        email = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         //link the variables in this activity with that in the layout
         usernameDisplay = findViewById(R.id.input_Username);
@@ -73,7 +74,6 @@ public class MyProfile extends AppCompatActivity {
             public void onClick(View view) {
                 //go to ModifyProfile with the username of the user
                 Intent intent = new Intent(MyProfile.this, ModifiyProfile.class);
-                intent.putExtra("email", email);
                 startActivity(intent);
             }
         });
@@ -98,6 +98,7 @@ public class MyProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //go to LoginPage
+                FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(MyProfile.this, LoginPage.class);
                 finish();
                 startActivity(intent);
@@ -175,7 +176,6 @@ public class MyProfile extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.profile_taskbar:
                 Intent intent = new Intent(MyProfile.this, MyProfile.class);
-                intent.putExtra("username", email);
                 startActivity(intent);
                 break;
 
