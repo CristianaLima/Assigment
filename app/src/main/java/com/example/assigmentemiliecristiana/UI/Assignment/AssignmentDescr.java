@@ -210,11 +210,12 @@ public class AssignmentDescr extends AppCompatActivity {
         assignment.setStatus(status);
         assignment.setType(type);
         assignment.setDate(dateL);
+        assignment.setOwner(email);
 
         //update the database
-        AssignmentViewModel.Factory factory = new AssignmentViewModel.Factory(
-                getApplication(),assignmentId);
-        viewModel = new ViewModelProvider(this,factory).get(AssignmentViewModel.class);
+//        AssignmentViewModel.Factory factory = new AssignmentViewModel.Factory(
+//                getApplication(),assignmentId);
+//        viewModel = new ViewModelProvider(this,factory).get(AssignmentViewModel.class);
         viewModel.updateAssignment(assignment, new OnAsyncEventListener() {
             @Override
             public void onSuccess() {
